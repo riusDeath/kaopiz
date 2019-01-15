@@ -31,11 +31,22 @@
 			Route::get('/delete', 'Part2Controller@delete')->name('part2.delete');
 
 		});
+
 		Route::group(['prefix' => 'part3'], function(){
 			Route::post('/add', 'Part3Controller@add')->name('part3.add');
 			Route::get('/delete', 'Part3Controller@delete')->name('part3.delete');
-
 		});
+
+		Route::group(['prefix' => 'part4'], function(){
+			Route::post('/add', 'Part4Controller@add')->name('part4.add');
+			Route::get('/delete', 'Part4Controller@delete')->name('part4.delete');
+		});
+
+		Route::group(['prefix' => 'part5'], function(){
+			Route::post('/add', 'Part5Controller@add')->name('part5.add');
+			Route::get('/delete', 'Part5Controller@delete')->name('part5.delete');
+		});
+
 	});
 
  ?>

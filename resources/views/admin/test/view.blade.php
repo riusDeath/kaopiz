@@ -8,6 +8,8 @@
         <li><a href="#tab_1" data-toggle="tab" aria-expanded="false">Part 1: Photographs</a></li>
         <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">Part 2: Question-Response</a></li>
         <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Part 3: Short conversation</a></li>
+        <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Part 4: Short talk</a></li>
+        <li><a href="#tab_5" data-toggle="tab" aria-expanded="false">Part 5: Incomplete sentence</a></li>
     </ul>
     <div class="tab-content">
         <div id="main-info" class="tab-pane fade in active">
@@ -82,7 +84,7 @@
         </div>
         </div>
         </div>
-{{-- /////tab 2 --}}
+{{-- /////tab 1 --}}
     <div class="tab-pane" id="tab_1">
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -194,6 +196,7 @@
             @endforeach
         </table>
         </div>
+    {{-- tab 2 --}}
     <div class="tab-pane" id="tab_2">
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -294,6 +297,7 @@
         @endforeach
         </table> 
     </div>
+    {{-- tab 3 --}}
     <div class="tab-pane" id="tab_3">
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -401,7 +405,6 @@
             <tr>
                 <th>#</th>
                 <th>Media</th>
-                <th>Picture</th>
                 <th>Answer</th>
                 <th>Level</th>
                 <th>Edit</th>
@@ -411,7 +414,6 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td class="c-Edit">{{ $part3->media['mediaFile'] }}</td>
-                <td><img src="{{ $part3->picture }}" alt="" width="50px">{{ $part3->picture }}</td>
                 <td>{{ $part3->answer }}</td>
                 <td>{{ $part3->level['level'] }}</td>
                     <td class="text-center">
@@ -428,13 +430,275 @@
             @endforeach
         </table>
     </div>
+    {{-- tab 4 --}}
+    <div class="tab-pane" id="tab_4">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"></h3>
+            </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+            <div class="box-header">
+                <h3 class="box-title">Add Question Part 4: SHORT TALK
+                </h3>
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
+                        title="Remove">
+                    <i class="fa fa-times"></i></button>
+                </div>
+              <!-- /. tools -->
+            </div>
+        <div class="box-body pad" style="display: none">
+            <form role="form" action="{{ route('part4.add') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="box-body">
+                    <div class="col-md-6">
+                        <input type="hidden" value="{{ $model->id }}" name="test_id">
+                        <div class="form-group ">
+                            <label for="exampleInputEmail1">File Media</label>
+                            <input type="file" data-media="media" name="mediaFile" data-link="media" required="">
+                            <audio controls class="media">
+                                <source src="" type="audio/mpeg" >
+                            </audio>
+                        </div>
+                        <div class="form-group">
+                            <label>Level</label>
+                            <select class="form-control" name="level_id">
+                            @foreach($level as $lev)
+                            <option value="{{ $lev->id }}" selected="">{{ $lev->level }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                    <div class="box">
+                    <!-- /.box-header -->
+                        <h3 class="box-title">Script answer
+                        </h3>
+                        <textarea name="script_answer" class="textarea" placeholder="Please enter script asnwer here"
+                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12 questionPart4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Question: </label>
+                            <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="Question" name="question[]">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionA: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionA" name="optionA[]">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionB: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionB" name="optionB[]">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionC: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionC" name="optionC[]">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionD: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionD" name="optionD[]">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Answer</label>
+                            <select name="answer[]" id="">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="addPart3"></div>
+                    <button class="btn btn-success btn-addQuestionPart4"><i class="fa fa-fw fa-plus-square"></i></button>
+                    <button class="btn btn-danger btn-removeQuestionPart4" style="display: none"><i class="fa fa-fw fa-remove"></i></button>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <button type="submit" class="btn btn-primary " name="add">Add</button>
+                </div>
+                {{-- <div class="box-footer col-md-6">
+                    <button type="button" class="btn btn-primary  name="update" title="You can choose a row table!">Update</button><span class="text-red">Please select a row in the table to edit!</span>
+                </div> --}}
+            </form>
+        </div>
+        </div>
+        <table class="table table-bordered table-hover scroll" id="table_test">
+            <tr>
+                <th>#</th>
+                <th>Media</th>
+                <th>Answer</th>
+                <th>Level</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            @foreach($model->part4 as $part4)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td class="c-Edit">{{ $part4->media['mediaFile'] }}</td>
+                <td>{{ $part4->answer }}</td>
+                <td>{{ $part4->level['level'] }}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-sm btn-success edit" data-toggle="modal" data-target="#modal-add" data-id="{{ $part4->id }}" data-status="{{ $part4->status }}">
+                            <i class="fa fa-fw fa-edit"></i>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part4->id }}" linkUrl="{{ route('part4.delete', ['id' => $part4->id])}}" >
+                            <i class="fa fa-fw fa-times-circle" ></i>
+                        </button>
+                    </td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
+    {{-- tab 5 --}}
+    <div class="tab-pane" id="tab_5">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"></h3>
+            </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+            <div class="box-header">
+                <h3 class="box-title">Add Question Part 5: Incomplete sentence
+                </h3>
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
+                        title="Remove">
+                    <i class="fa fa-times"></i></button>
+                </div>
+              <!-- /. tools -->
+            </div>
+        <div class="box-body pad">
+
+            <form role="form" action="{{ route('part1.add') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="box-body">
+                    <div class="col-md-6">
+                        <input type="hidden" value="{{ $model->id }}" name="test_id">
+                        
+                        <div class="form-group">
+                            <label>Level</label>
+                            <select class="form-control" name="level_id">
+                            @foreach($level as $lev)
+                            <option value="{{ $lev->id }}">{{ $lev->level }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-12 questionPart4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Question: </label>
+                            <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="Question" name="question">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionA: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionA" name="optionA">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionB: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionB" name="optionB">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionC: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionC" name="optionC">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionD: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionD" name="optionD">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Answer</label>
+                            <select name="answer" id="">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                    </div>
+                        <div class="box">
+            
+            <!-- /.box-header -->
+                <h3 class="box-title">Script answer
+                </h3>
+                <textarea name="script_answer" class="textarea" placeholder="Please enter script asnwer here"
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                </div>
+                </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer col-md-6">
+                    <button type="submit" class="btn btn-primary " name="add">Add</button>
+                </div>
+                {{-- <div class="box-footer col-md-6">
+                    <button type="button" class="btn btn-primary  name="update" title="You can choose a row table!">Update</button><span class="text-red">Please select a row in the table to edit!</span>
+                </div> --}}
+            </form>
+        </div>
+        </div>
+        <table class="table table-bordered table-hover scroll" id="table_test">
+            <tr>
+                <th>#</th>
+                <th>Question</th>
+                <th>optionA</th>
+                <th>optionB</th>
+                <th>optionC</th>
+                <th>optionD</th>
+                <th>Answer</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            @foreach($model->part5 as $part5)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $part5->question }}</td>
+                <td>{{ $part5->optionA }}</td>
+                <td>{{ $part5->optionB }}</td>
+                <td>{{ $part5->optionC }}</td>
+                <td>{{ $part5->optionD }}</td>
+                <td>{{ $part5->answer }}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-sm btn-success edit" data-toggle="modal" data-target="#modal-add" data-id="{{ $part5->id }}" data-status="{{ $part5->status }}">
+                            <i class="fa fa-fw fa-edit"></i>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part5->id }}" linkUrl="{{ route('part5.delete', ['id' => $part5->id])}}" >
+                            <i class="fa fa-fw fa-times-circle" ></i>
+                        </button>
+                    </td>
+            </tr>
+            @endforeach
+        </table>
+        </div>
+    {{-- tab 6 --}}
 </div>
 </div>
 @endsection
 @section('script')
 <script>
     $(document).ready(function(){
-        var index3 = 0;
+        // add remove question part 3
         $('.btn-addQuestionPart3').on('click', function(e){
             e.preventDefault();
             $('.questionPart3').clone().appendTo('#addPart3');
@@ -444,6 +708,18 @@
 
         $('.btn-removeQuestionPart3').on('click', function(e){
             $('#addPart3 .questionPart3:last-child').remove();
+        });
+
+        // add remove question part 4
+        $('.btn-addQuestionPart4').on('click', function(e){
+            e.preventDefault();
+            $('.questionPart4').clone().appendTo('#addPart3');
+            $('.btn-removeQuestionPart4').show();
+            $('#addPart3 .questionPart4:last-child input').val(null);
+        });
+
+        $('.btn-removeQuestionPart4').on('click', function(e){
+            $('#addPart3 .questionPart4:last-child').remove();
         });
 
         $('.c-Edit').dblclick(function(){

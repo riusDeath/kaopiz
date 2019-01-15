@@ -23,13 +23,13 @@ class Part5 extends Model
     
     public function media()
     {
-        $this->hasOne('App\Model\Media', 'media_id', 'id');
-    }
+        return $this->belongsTo(Media::class, 'media_id', 'id');    }
 
     public function level()
     {
-        $this->hasOne('App\Model\Level', 'level_id', 'id');
+        return $this->belongsTo('App\Model\Level', 'level_id', 'id');
     }
+
 
     public function test()
     {
