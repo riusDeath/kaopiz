@@ -24,6 +24,11 @@
 
 			Route::post('/add', 'Part1Controller@add')->name('part1.add');
 		});
+
+		Route::group(['prefix' => 'part2'], function(){
+			Route::post('/add', 'Part2Controller@add')->name('part2.add');
+
+		});
 	});
 
  ?>
