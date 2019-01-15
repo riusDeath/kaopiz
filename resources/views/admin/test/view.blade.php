@@ -601,41 +601,7 @@
                             @endforeach
                             </select>
                         </div>
-                        <div class="col-md-12 questionPart4">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Question: </label>
-                            <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="Question" name="question">
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">optionA: </label>
-                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionA" name="optionA">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">optionB: </label>
-                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionB" name="optionB">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">optionC: </label>
-                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionC" name="optionC">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">optionD: </label>
-                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionD" name="optionD">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Answer</label>
-                            <select name="answer" id="">
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                            </select>
-                        </div>
-                    </div>
+                        
                         <div class="box">
             
             <!-- /.box-header -->
