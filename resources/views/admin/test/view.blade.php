@@ -242,7 +242,6 @@
                                 <option value="A">A</option>
                                 <option value="B">B</option>
                                 <option value="C">C</option>
-                                <option value="D">D</option>
                             </select>
                         </div>
                     </div>
@@ -287,13 +286,145 @@
                     </button>
                 </td>
                 <td class="text-center">
-                    <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part2->id }}" linkUrl="{{ route('part1.delete', ['id' => $part2->id])}}" >
+                    <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part2->id }}" linkUrl="{{ route('part2.delete', ['id' => $part2->id])}}" >
                         <i class="fa fa-fw fa-times-circle" ></i>
                     </button>
                 </td>
         </tr>
         @endforeach
-    </table> 
+        </table> 
+    </div>
+    <div class="tab-pane" id="tab_3">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"></h3>
+            </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+            <div class="box-header">
+                <h3 class="box-title">Add Question Part 3: SHORT CONVERSATION
+                </h3>
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
+                        title="Remove">
+                    <i class="fa fa-times"></i></button>
+                </div>
+              <!-- /. tools -->
+            </div>
+        <div class="box-body pad">
+            <form role="form" action="{{ route('part2.add') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="box-body">
+                    <div class="col-md-6">
+                        <input type="hidden" value="{{ $model->id }}" name="test_id">
+                        <div class="form-group ">
+                            <label for="exampleInputEmail1">File Media</label>
+                            <input type="file" data-media="media" name="mediaFile" data-link="media" required="">
+                            <audio controls class="media">
+                                <source src="" type="audio/mpeg" >
+                            </audio>
+                        </div>
+                        <div class="form-group">
+                            <label>Level</label>
+                            <select class="form-control" name="level_id">
+                            @foreach($level as $lev)
+                            <option value="{{ $lev->id }}">{{ $lev->level }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                    <div class="box">
+                    <!-- /.box-header -->
+                        <h3 class="box-title">Script answer
+                        </h3>
+                        <textarea name="script_answer" class="textarea" placeholder="Please enter script asnwer here"
+                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12 questionPart3">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Question: </label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Question" name="question[]">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionA: </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="optionA" name="optionA[]">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionB: </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="optionB" name="optionB[]">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionC: </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="optionC" name="optionC[]">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionD: </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="optionD" name="optionD[]">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Answer</label>
+                            <select name="answer[]" id="">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="addPart3"></div>
+                    <button class="btn btn-success"><i class="fa fa-fw fa-plus-square btn-addQuestionPart3"></i></button>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer col-md-6">
+                    <button type="submit" class="btn btn-primary " name="add">Add</button>
+                </div>
+                {{-- <div class="box-footer col-md-6">
+                    <button type="button" class="btn btn-primary  name="update" title="You can choose a row table!">Update</button><span class="text-red">Please select a row in the table to edit!</span>
+                </div> --}}
+            </form>
+        </div>
+        </div>
+        <table class="table table-bordered table-hover scroll" id="table_test">
+            <tr>
+                <th>#</th>
+                <th>Media</th>
+                <th>Picture</th>
+                <th>Answer</th>
+                <th>Level</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            @foreach($model->part3 as $part3)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td class="c-Edit">{{ $part3->media['mediaFile'] }}</td>
+                <td><img src="{{ $part3->picture }}" alt="" width="50px">{{ $part3->picture }}</td>
+                <td>{{ $part3->answer }}</td>
+                <td>{{ $part3->level['level'] }}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-sm btn-success edit" data-toggle="modal" data-target="#modal-add" data-id="{{ $part3->id }}" data-status="{{ $part3->status }}">
+                            <i class="fa fa-fw fa-edit"></i>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part3->id }}" linkUrl="{{ route('part3.delete', ['id' => $part3->id])}}" >
+                            <i class="fa fa-fw fa-times-circle" ></i>
+                        </button>
+                    </td>
+            </tr>
+            @endforeach
+        </table>
     </div>
 </div>
 </div>
@@ -301,6 +432,12 @@
 @section('script')
 <script>
     $(document).ready(function(){
+        $('.btn-addQuestionPart3').on('click', function(e){
+            e.preventDefault();
+            $('#addPart3').clone().appendTo('.addQuestionPart3');
+            alert('ok');
+        });
+
         $('.c-Edit').dblclick(function(){
             // $('')
             alert('ok');

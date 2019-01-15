@@ -19,5 +19,12 @@ class Part2Controller extends Controller
         
         return redirect()->back()->with('msg', 'Create successfully!');
     }
+
+    public function delete(Request $request)
+    {
+    	$model = Part2::find($request->id);
+    	$model->delete();
+    	return response()->json('Delete successfully!');
+    }
     
 }

@@ -28,6 +28,13 @@
 		Route::group(['prefix' => 'part2'], function(){
 			Route::post('/add', 'Part2Controller@add')->name('part2.add');
 
+			Route::get('/delete', 'Part2Controller@delete')->name('part2.delete');
+
+		});
+		Route::group(['prefix' => 'part3'], function(){
+			Route::post('/add', 'Part2Controller@add')->name('part2.add');
+			Route::get('/delete', 'Part3Controller@delete')->name('part3.delete');
+
 		});
 	});
 
