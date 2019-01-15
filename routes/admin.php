@@ -32,7 +32,7 @@
 
 		});
 		Route::group(['prefix' => 'part3'], function(){
-			Route::post('/add', 'Part2Controller@add')->name('part2.add');
+			Route::post('/add', 'Part3Controller@add')->name('part3.add');
 			Route::get('/delete', 'Part3Controller@delete')->name('part3.delete');
 
 		});

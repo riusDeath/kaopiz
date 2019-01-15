@@ -316,7 +316,7 @@
               <!-- /. tools -->
             </div>
         <div class="box-body pad">
-            <form role="form" action="{{ route('part2.add') }}" method="post" enctype="multipart/form-data">
+            <form role="form" action="{{ route('part3.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="box-body">
                     <div class="col-md-6">
@@ -350,26 +350,26 @@
                     <div class="col-md-12 questionPart3">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Question: </label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Question" name="question[]">
+                            <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="Question" name="question[]">
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">optionA: </label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="optionA" name="optionA[]">
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionA" name="optionA[]">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">optionB: </label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="optionB" name="optionB[]">
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionB" name="optionB[]">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">optionC: </label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="optionC" name="optionC[]">
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionC" name="optionC[]">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">optionD: </label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="optionD" name="optionD[]">
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionD" name="optionD[]">
                             </div>
                         </div>
                         <div class="form-group">
@@ -383,10 +383,11 @@
                         </div>
                     </div>
                     <div id="addPart3"></div>
-                    <button class="btn btn-success"><i class="fa fa-fw fa-plus-square btn-addQuestionPart3"></i></button>
+                    <button class="btn btn-success btn-addQuestionPart3"><i class="fa fa-fw fa-plus-square"></i></button>
+                    <button class="btn btn-danger btn-removeQuestionPart3" style="display: none"><i class="fa fa-fw fa-remove"></i></button>
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer col-md-6">
+                <div class="box-footer text-center">
                     <button type="submit" class="btn btn-primary " name="add">Add</button>
                 </div>
                 {{-- <div class="box-footer col-md-6">
@@ -432,10 +433,16 @@
 @section('script')
 <script>
     $(document).ready(function(){
+        var index3 = 0;
         $('.btn-addQuestionPart3').on('click', function(e){
             e.preventDefault();
-            $('#addPart3').clone().appendTo('.addQuestionPart3');
-            alert('ok');
+            $('.questionPart3').clone().appendTo('#addPart3');
+            $('.btn-removeQuestionPart3').show();
+            $('#addPart3 .questionPart3:last-child input').val(null);
+        });
+
+        $('.btn-removeQuestionPart3').on('click', function(e){
+            $('#addPart3 .questionPart3:last-child').remove();
         });
 
         $('.c-Edit').dblclick(function(){
