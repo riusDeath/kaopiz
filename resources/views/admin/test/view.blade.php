@@ -308,14 +308,15 @@
                 <div class="pull-right box-tools">
                 <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
-                    <i class="fa fa-minus"></i></button>
+                        <i class="fa fa-plus"></i>
+                    </button>
                 <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
                         title="Remove">
                     <i class="fa fa-times"></i></button>
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad">
+        <div class="box-body pad" style="display: none">
             <form role="form" action="{{ route('part3.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="box-body">
@@ -332,7 +333,7 @@
                             <label>Level</label>
                             <select class="form-control" name="level_id">
                             @foreach($level as $lev)
-                            <option value="{{ $lev->id }}">{{ $lev->level }}</option>
+                            <option value="{{ $lev->id }}" selected="">{{ $lev->level }}</option>
                             @endforeach
                             </select>
                         </div>
