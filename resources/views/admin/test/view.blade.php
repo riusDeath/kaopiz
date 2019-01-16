@@ -192,7 +192,7 @@
             </tr>
             @endforeach
         </table>
-        </div>
+    </div>
     {{-- tab 2 --}}
     <div class="tab-pane" id="tab_2">
         <div class="box box-primary">
@@ -832,7 +832,7 @@
         </table>
     </div>
     {{-- tab 6 --}}
-    <div class="tab-pane" id="tab_6">
+    <div class="tab-pane" id="tab_7">
         <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title"></h3>
@@ -1026,16 +1026,19 @@
         $('input[type=file]').change(function() {
         var link = $(this).data("link");
         var file = $(this).get(0).files[0];
-        var reader  = new FileReader();
+        if (file!=undefined) {
+            var reader  = new FileReader();
 
-        reader.addEventListener("load", function () {
-            $('.'+link).attr("src",reader.result )  ;
-        }, false);
+            reader.addEventListener("load", function () {
+                $('.'+link).attr("src",reader.result )  ;
+            }, false);
 
-        if (file) {
-            reader.readAsDataURL(file);
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        } else {
+                $('.'+link).removeAttr('src');  ;
         }
-        
     });
     });
 </script>

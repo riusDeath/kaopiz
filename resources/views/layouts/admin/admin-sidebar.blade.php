@@ -30,7 +30,7 @@
                 </a>
                 <ul class="treeview-menu">
                 <li><a href="{{ route('test.index') }}"><i class="fa fa-circle-o"></i>Test</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+                <li><a href="{{ route('part1.index') }}"><i class="fa fa-circle-o"></i>Part1: Photo</a></li>
                 </ul>
             </li>
         </ul>

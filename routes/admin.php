@@ -23,6 +23,8 @@
 			Route::get('/delete', 'Part1Controller@delete')->name('part1.delete');
 
 			Route::post('/add', 'Part1Controller@add')->name('part1.add');
+
+			Route::get('/add', 'Part1Controller@index')->name('part1.index');
 		});
 
 		Route::group(['prefix' => 'part2'], function(){
