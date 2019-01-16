@@ -23,7 +23,8 @@ class Part5 extends Model
     
     public function media()
     {
-        return $this->belongsTo(Media::class, 'media_id', 'id');    }
+        return $this->belongsTo(Media::class, 'media_id', 'id');   
+    }
 
     public function level()
     {

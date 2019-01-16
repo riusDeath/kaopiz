@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Admin\Test;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Part6;
+use App\Model\Part7;
 use App\Model\Passage;
 
-class Part6Controller extends Controller
+class Part7Controller extends Controller
 {
     public function delete(Request $request)
     {
-    	$model = Part6::find($request->id);
+    	$model = Part7::find($request->id);
     	$model->delete();
     	return response()->json('Delete successfully!');
     }
@@ -25,16 +25,17 @@ class Part6Controller extends Controller
 
     	$passage->save();
     	foreach ($request->optionA as $key => $value) {
-    		$part6 = new Part6();
-    		$part6->passage_id = $passage->id;
-    		$part6->test_id = $request->test_id;
-    		$part6->level_id = $request->level_id;
-    		$part6->optionA = $value;
-    		$part6->optionB = $request->optionB[$key];
-    		$part6->optionC = $request->optionC[$key];
-    		$part6->optionD = $request->optionD[$key];
-    		$part6->answer = $request->answer[$key];
-    		$part6->save();
+    		$part7 = new Part7();
+    		$part7->passage_id = $passage->id;
+    		$part7->test_id = $request->test_id;
+    		$part7->level_id = $request->level_id;
+    		$part7->optionA = $value;
+    		$part7->question = $request->question[$key];
+    		$part7->optionB = $request->optionB[$key];
+    		$part7->optionC = $request->optionC[$key];
+    		$part7->optionD = $request->optionD[$key];
+    		$part7->answer = $request->answer[$key];
+    		$part7->save();
     	}
 
         return redirect()->back()->with('msg', 'Create successfully!');
