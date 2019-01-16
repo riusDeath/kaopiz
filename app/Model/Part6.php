@@ -22,14 +22,14 @@ class Part6 extends Model
 
     public function passage()
     {
-        $this->hasOne('App\Model\Passage', 'passage_id', 'id');
+        return $this->belongsTo(Passage::class, 'passage_id', 'id');
     }
 
     public function level()
     {
-        $this->hasOne('App\Model\Level', 'level_id', 'id');
+        return $this->belongsTo('App\Model\Level', 'level_id', 'id');
     }
-
+    
     public function test()
     {
         $this->hasOne('App\Model\Test', 'test_id', 'id');

@@ -47,6 +47,11 @@
 			Route::get('/delete', 'Part5Controller@delete')->name('part5.delete');
 		});
 
+		Route::group(['prefix' => 'part6'], function(){
+			Route::post('/add', 'Part6Controller@add')->name('part6.add');
+			Route::get('/delete', 'Part6Controller@delete')->name('part6.delete');
+		});
+
 	});
 
  ?>

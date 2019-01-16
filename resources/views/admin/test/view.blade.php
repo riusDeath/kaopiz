@@ -1,5 +1,8 @@
 @extends('layouts.admin.admin-master')
 @section('title', 'View Test')
+@section('style')
+<script type="text/javascript" src="{{ asset('/ckeditor/ckeditor.js') }}"></script>
+@endsection
 @section('content')
 <input type="hidden" value="" id="defaultImage">
 <div>
@@ -10,6 +13,8 @@
         <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Part 3: Short conversation</a></li>
         <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Part 4: Short talk</a></li>
         <li><a href="#tab_5" data-toggle="tab" aria-expanded="false">Part 5: Incomplete sentence</a></li>
+        <li><a href="#tab_6" data-toggle="tab" aria-expanded="false">Part 6: Text completion</a></li>
+        <li><a href="#tab_7" data-toggle="tab" aria-expanded="false">Part 7: Reading comprehen</a></li>
     </ul>
     <div class="tab-content">
         <div id="main-info" class="tab-pane fade in active">
@@ -46,14 +51,6 @@
         <div class="progress-group">
             <span class="progress-text">Part 4: Short talk</span>
             <span class="progress-number"><b>{{ count($model->part4) }}</b> question</span>
-            <div class="progress sm">
-                <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-            </div>
-        </div>
-        <!-- /.progress-group -->
-        <div class="progress-group">
-            <span class="progress-text">Part 4: Short talk</span>
-            <span class="progress-number"><b>{{ count($model->part5) }}</b> question</span>
             <div class="progress sm">
                 <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
             </div>
@@ -165,7 +162,7 @@
             </form>
         </div>
         </div>
-        <table class="table table-bordered table-hover scroll" id="table_test">
+        <table class="table table-bordered table-hover scroll" id="table_test1" >
             <tr>
                 <th>#</th>
                 <th>Media</th>
@@ -188,7 +185,7 @@
                         </button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part1->id }}" linkUrl="{{ route('part1.delete', ['id' => $part1->id])}}" >
+                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part1->id }}" linkUrl="{{ route('part1.delete', ['id' => $part1->id])}}" data-table = "#table_test1">
                             <i class="fa fa-fw fa-times-circle" ></i>
                         </button>
                     </td>
@@ -268,7 +265,7 @@
             </form>
         </div>
         </div>
-        <table class="table table-bordered table-hover scroll" id="table_test">
+        <table class="table table-bordered table-hover scroll" id="table_test2" >
         <tr>
             <th>#</th>
             <th>Media</th>
@@ -289,7 +286,7 @@
                     </button>
                 </td>
                 <td class="text-center">
-                    <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part2->id }}" linkUrl="{{ route('part2.delete', ['id' => $part2->id])}}" >
+                    <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part2->id }}" linkUrl="{{ route('part2.delete', ['id' => $part2->id])}}" data-table = "#table_test2">
                         <i class="fa fa-fw fa-times-circle" ></i>
                     </button>
                 </td>
@@ -320,7 +317,7 @@
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad" style="display: none">
+        <div class="box-body pad" style="">
             <form role="form" action="{{ route('part3.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="box-body">
@@ -388,8 +385,9 @@
                         </div>
                     </div>
                     <div id="addPart3"></div>
-                    <button class="btn btn-success btn-addQuestionPart3"><i class="fa fa-fw fa-plus-square"></i></button>
-                    <button class="btn btn-danger btn-removeQuestionPart3" style="display: none"><i class="fa fa-fw fa-remove"></i></button>
+
+                    <button class="btn btn-success btn-addQuestionPart" data-dblPart="questionPart3" data-div="#addPart3"><i class="fa fa-fw fa-plus-square"></i></button>
+                    <button class="btn btn-danger btn-removeQuestionPart" style="" data-dblPart="questionPart3" data-div="#addPart3"><i class="fa fa-fw fa-remove"></i></button>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer text-center">
@@ -401,7 +399,7 @@
             </form>
         </div>
         </div>
-        <table class="table table-bordered table-hover scroll" id="table_test">
+        <table class="table table-bordered table-hover scroll" id="table_test3" >
             <tr>
                 <th>#</th>
                 <th>Media</th>
@@ -422,7 +420,7 @@
                         </button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part3->id }}" linkUrl="{{ route('part3.delete', ['id' => $part3->id])}}" >
+                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part3->id }}" linkUrl="{{ route('part3.delete', ['id' => $part3->id])}}" data-table = "#table_test3">
                             <i class="fa fa-fw fa-times-circle" ></i>
                         </button>
                     </td>
@@ -520,9 +518,9 @@
                             </select>
                         </div>
                     </div>
-                    <div id="addPart3"></div>
-                    <button class="btn btn-success btn-addQuestionPart4"><i class="fa fa-fw fa-plus-square"></i></button>
-                    <button class="btn btn-danger btn-removeQuestionPart4" style="display: none"><i class="fa fa-fw fa-remove"></i></button>
+                    <div id="addPart4"></div>
+                    <button class="btn btn-success btn-addQuestionPart" data-dblPart="questionPart4" data-div="#addPart4"><i class="fa fa-fw fa-plus-square"></i></button>
+                    <button class="btn btn-danger btn-removeQuestionPart" style="display: none" data-dblPart="questionPart4" data-div="#addPart4"><i class="fa fa-fw fa-remove"></i></button>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer text-center">
@@ -534,7 +532,7 @@
             </form>
         </div>
         </div>
-        <table class="table table-bordered table-hover scroll" id="table_test">
+        <table class="table table-bordered table-hover scroll" id="table_test4" >
             <tr>
                 <th>#</th>
                 <th>Media</th>
@@ -555,7 +553,7 @@
                         </button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part4->id }}" linkUrl="{{ route('part4.delete', ['id' => $part4->id])}}" >
+                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part4->id }}" linkUrl="{{ route('part4.delete', ['id' => $part4->id])}}" data-table = "#table_test4">
                             <i class="fa fa-fw fa-times-circle" ></i>
                         </button>
                     </td>
@@ -587,7 +585,7 @@
             </div>
         <div class="box-body pad">
 
-            <form role="form" action="{{ route('part1.add') }}" method="post" enctype="multipart/form-data">
+            <form role="form" action="{{ route('part5.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="box-body">
                     <div class="col-md-6">
@@ -608,8 +606,43 @@
                 <h3 class="box-title">Script answer
                 </h3>
                 <textarea name="script_answer" class="textarea" placeholder="Please enter script asnwer here"
-                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                          style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
+                </div>
+                <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Question: </label>
+                            <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="Question" name="question">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionA: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionA" name="optionA">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionB: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionB" name="optionB">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionC: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionC" name="optionC">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionD: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionD" name="optionD">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Answer</label>
+                            <select name="answer" id="">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
                 </div>
                 </div>
                 <!-- /.box-body -->
@@ -622,7 +655,7 @@
             </form>
         </div>
         </div>
-        <table class="table table-bordered table-hover scroll" id="table_test">
+        <table class="table table-bordered table-hover scroll" id="table_test5"  >
             <tr>
                 <th>#</th>
                 <th>Question</th>
@@ -649,43 +682,170 @@
                         </button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part5->id }}" linkUrl="{{ route('part5.delete', ['id' => $part5->id])}}" >
+                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part5->id }}" linkUrl="{{ route('part5.delete', ['id' => $part5->id])}}" data-table = "#table_test5">
                             <i class="fa fa-fw fa-times-circle" ></i>
                         </button>
                     </td>
             </tr>
             @endforeach
         </table>
-        </div>
+    </div>
     {{-- tab 6 --}}
+    <div class="tab-pane" id="tab_6">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"></h3>
+            </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+            <div class="box-header">
+                <h3 class="box-title">Add Question Part 6: Incomplete sentence
+                </h3>
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
+                        title="Remove">
+                    <i class="fa fa-times"></i></button>
+                </div>
+              <!-- /. tools -->
+            </div>
+        <div class="box-body pad">
+
+            <form role="form" action="{{ route('part6.add') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="box-body">
+                    <div class="col-md-6">
+                        <input type="hidden" value="{{ $model->id }}" name="test_id">
+                        
+                        <div class="form-group">
+                            <label>Level</label>
+                            <select class="form-control" name="level_id">
+                            @foreach($level as $lev)
+                            <option value="{{ $lev->id }}">{{ $lev->level }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                        
+                        <div class="box">
+            
+            <!-- /.box-header -->
+                <h3 class="box-title">Script answer
+                </h3>
+                <textarea class="ckeditor" name="content" cols="80" rows="10">{{ old('description') }}</textarea>
+                <script>
+                    CKEDITOR.replace( 'content', {
+                            filebrowserBrowseUrl: 'http://localhost:8888/web-toeic/public/ckfinder/ckfinder.html',
+                            filebrowserUploadUrl: 'http://localhost:8888/web-toeic/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+                    } );
+                </script>
+                {{-- <textarea name="script_answer" class="textarea" placeholder="Please enter script asnwer here"
+                          style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea> --}}
+                </div>
+                </div>
+                <div class="col-md-6 questionPart6">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionA: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionA" name="optionA[]">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionB: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionB" name="optionB[]">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionC: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionC" name="optionC[]">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">optionD: </label>
+                                <input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="optionD" name="optionD[]">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Answer</label>
+                            <select name="answer[]" id="">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                </div>
+                </div>
+                <div id="addPart6"></div>
+                    <button class="btn btn-success btn-addQuestionPart" data-dblPart="questionPart6" data-div="#addPart6"><i class="fa fa-fw fa-plus-square"></i></button>
+                    <button class="btn btn-danger btn-removeQuestionPart" style="display: none" data-dblPart="questionPart6" data-div="#addPart6"><i class="fa fa-fw fa-remove"></i></button>
+                <!-- /.box-body -->
+                <div class="box-footer col-md-6">
+                    <button type="submit" class="btn btn-primary " name="add">Add</button>
+                </div>
+                {{-- <div class="box-footer col-md-6">
+                    <button type="button" class="btn btn-primary  name="update" title="You can choose a row table!">Update</button><span class="text-red">Please select a row in the table to edit!</span>
+                </div> --}}
+            </form>
+        </div>
+        </div>
+        <table class="table table-bordered table-hover scroll" id="table_test6"  >
+            <tr>
+                <th>#</th>
+                <th>Type Passage</th>
+                <th>optionA</th>
+                <th>optionB</th>
+                <th>optionC</th>
+                <th>optionD</th>
+                <th>Answer</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            @foreach($model->part6 as $part6)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $part6->passage->detail }}</td>
+                <td>{{ $part6->optionA }}</td>
+                <td>{{ $part6->optionB }}</td>
+                <td>{{ $part6->optionC }}</td>
+                <td>{{ $part6->optionD }}</td>
+                <td>{{ $part6->answer }}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-sm btn-success edit" data-toggle="modal" data-target="#modal-add" data-id="{{ $part6->id }}" data-status="{{ $part6->status }}">
+                            <i class="fa fa-fw fa-edit"></i>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part6->id }}" linkUrl="{{ route('part6.delete', ['id' => $part6->id])}}" data-table = "#table_test6">
+                            <i class="fa fa-fw fa-times-circle" ></i>
+                        </button>
+                    </td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
 </div>
 </div>
 @endsection
 @section('script')
 <script>
     $(document).ready(function(){
-        // add remove question part 3
-        $('.btn-addQuestionPart3').on('click', function(e){
+        // // add remove question part 
+        $('.btn-addQuestionPart').on('click', function(e){
             e.preventDefault();
-            $('.questionPart3').clone().appendTo('#addPart3');
-            $('.btn-removeQuestionPart3').show();
-            $('#addPart3 .questionPart3:last-child input').val(null);
+            var dbl = $(this).attr('data-dblPart');
+            var divid = $(this).attr('data-div');
+            $('.'+dbl).clone().appendTo(''+divid);
+            // $('.questionPart4').clone().appendTo('#addPart3');
+            $('.btn-removeQuestionPart').show();
+            $(divid+' .'+dbl+':last-child input').val(null);
         });
 
-        $('.btn-removeQuestionPart3').on('click', function(e){
-            $('#addPart3 .questionPart3:last-child').remove();
-        });
-
-        // add remove question part 4
-        $('.btn-addQuestionPart4').on('click', function(e){
-            e.preventDefault();
-            $('.questionPart4').clone().appendTo('#addPart3');
-            $('.btn-removeQuestionPart4').show();
-            $('#addPart3 .questionPart4:last-child input').val(null);
-        });
-
-        $('.btn-removeQuestionPart4').on('click', function(e){
-            $('#addPart3 .questionPart4:last-child').remove();
+        $('.btn-removeQuestionPart').on('click', function(e){
+            var dbl = $(this).attr('data-dblPart');
+            var divid = $(this).attr('data-div');
+            $(divid+' .'+dbl+':last-child').remove();
         });
 
         $('.c-Edit').dblclick(function(){
@@ -694,16 +854,17 @@
         });
 
         $('.btn-remove').on('click', function(){
+                var idtable = $(this).attr('data-table');
                 var url = $(this).attr('linkUrl');
-                var del = confirm('You want to delete part1!');
+                var del = confirm('You want to delete question!');
                 if (del == true) {
                     $.ajax({
                         url: url,
                         type: 'GET',
                         success: function(data) {
-                            alert(data);
-                            $('#table_test').load(location.href +' #table_test>*');
+                            $(''+idtable).load(location.href +' '+idtable+'>*');
                             $('#part1').load(location.href +' #part1>*');
+                            alert(data);
                         }
                     });  
                 }
@@ -724,4 +885,5 @@
     });
     });
 </script>
+
 @endsection

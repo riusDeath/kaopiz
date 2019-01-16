@@ -10,6 +10,7 @@ class Passage extends Model
 
     protected $fillable = [
         'content', 
+        'detail', 
         'status',
     ];
 
