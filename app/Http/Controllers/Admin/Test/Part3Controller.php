@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Part3;
 use App\Model\part;
+use App\Model\Level;
+use App\Model\Test;
 
 class Part3Controller extends Controller
 {
@@ -37,5 +39,13 @@ class Part3Controller extends Controller
     	}
 
         return redirect()->back()->with('msg', 'Create successfully!');
+    }
+
+    public function index()
+    {
+        $level = Level::all();
+        $model = Part3::paginate(12);
+        $test = Test::orderBy('id', 'desc')->get();
+        return view('admin.question.part3', compact('level', 'test', 'model'));
     }
 }

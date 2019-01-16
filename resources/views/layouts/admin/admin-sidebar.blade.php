@@ -31,6 +31,12 @@
                 <ul class="treeview-menu">
                 <li><a href="{{ route('test.index') }}"><i class="fa fa-circle-o"></i>Test</a></li>
                 <li><a href="{{ route('part1.index') }}"><i class="fa fa-circle-o"></i>Part1: Photo</a></li>
+                <li><a href="{{ route('part2.index') }}"><i class="fa fa-circle-o"></i>Part2: Qu-Reponse</a></li>
+                <li><a href="{{ route('part3.index') }}"><i class="fa fa-circle-o"></i>Part3: Short talk</a></li>
+                <li><a href="{{ route('part4.index') }}"><i class="fa fa-circle-o"></i>Part4: Short talk</a></li>
+                <li><a href="{{ route('part5.index') }}"><i class="fa fa-circle-o"></i>Part5: Short talk</a></li>
+                <li><a href="{{ route('part6.index') }}"><i class="fa fa-circle-o"></i>Part6: Short talk</a></li>
+                <li><a href="{{ route('part7.index') }}"><i class="fa fa-circle-o"></i>Part7: Short talk</a></li>
                 </ul>
             </li>
         </ul>

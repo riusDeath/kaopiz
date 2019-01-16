@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Test;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Part7;
+use App\Model\Level;
+use App\Model\Test;
 use App\Model\Passage;
 
 class Part7Controller extends Controller
@@ -39,5 +41,13 @@ class Part7Controller extends Controller
     	}
 
         return redirect()->back()->with('msg', 'Create successfully!');
+    }
+
+    public function index()
+    {
+        $level = Level::all();
+        $model = Part7::paginate(12);
+        $test = Test::orderBy('id', 'desc')->get();
+        return view('admin.question.part7', compact('level', 'test', 'model'));
     }
 }
