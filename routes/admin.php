@@ -64,4 +64,8 @@
 
 	});
 
+	Route::group(['prefix' => 'User'], function(){
+			Route::get('/index', 'UserController@index')->name('user.index');
+	});
+
  ?>

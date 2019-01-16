@@ -34,9 +34,21 @@
                 <li><a href="{{ route('part2.index') }}"><i class="fa fa-circle-o"></i>Part2: Qu-Reponse</a></li>
                 <li><a href="{{ route('part3.index') }}"><i class="fa fa-circle-o"></i>Part3: Short talk</a></li>
                 <li><a href="{{ route('part4.index') }}"><i class="fa fa-circle-o"></i>Part4: Short talk</a></li>
-                <li><a href="{{ route('part5.index') }}"><i class="fa fa-circle-o"></i>Part5: Short talk</a></li>
-                <li><a href="{{ route('part6.index') }}"><i class="fa fa-circle-o"></i>Part6: Short talk</a></li>
-                <li><a href="{{ route('part7.index') }}"><i class="fa fa-circle-o"></i>Part7: Short talk</a></li>
+                <li><a href="{{ route('part5.index') }}"><i class="fa fa-circle-o"></i>Part 5: Incomplete sentence</a></li>
+                <li><a href="{{ route('part6.index') }}"><i class="fa fa-circle-o"></i>Part6: Text completion</a></li>
+                <li><a href="{{ route('part7.index') }}"><i class="fa fa-circle-o"></i>Part7: Reading comprehen</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-cubes"></i>
+                    <span>Manager User</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                <li><a href="{{ route('user.index') }}"><i class="fa fa-circle-o"></i>User</a></li>
                 </ul>
             </li>
         </ul>
