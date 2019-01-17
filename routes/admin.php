@@ -66,6 +66,14 @@
 
 	Route::group(['prefix' => 'User'], function(){
 			Route::get('/index', 'UserController@index')->name('user.index');
+			Route::get('/delete', 'UserController@delete')->name('user.delete');
+			Route::get('/save', 'UserController@save')->name('user.save');
+	});
+
+	Route::group(['namespace' => 'Guides', 'prefix' => 'Grammar guides'], function(){
+			Route::get('/index', 'GrammarGuidesController@index')->name('grammar_guides.index');
+			Route::get('/delete', 'UserController@delete')->name('user.delete');
+			Route::get('/save', 'UserController@save')->name('user.save');
 	});
 
  ?>

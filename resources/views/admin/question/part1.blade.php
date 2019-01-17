@@ -6,7 +6,7 @@
               <h3 class="box-title"></h3>
             </div>
           <!-- /.box-header -->
-          @if (count($errors) > 0)
+    @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -14,7 +14,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+    @endif
           <!-- form start -->
             <div class="box-header">
                 <h3 class="box-title">Add Question Part 1: PHOTO

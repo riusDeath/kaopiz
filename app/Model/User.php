@@ -7,11 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     protected $table = 'users';
+
+    const UPDATED_AT = 'updated_at';
     
     protected $fillable = [
         'name', 
         'email', 
         'password',
+        'role',
+        'status',
+        'created_at',
+        'update_at',
 
     ];
 
@@ -25,4 +31,12 @@ class User extends Model
         $this->belongsTo('App\Model\User_test', 'user_id');
     }
 
+    public function scopeSearch($query)
+    {
+        if (empty(request()->search)) {
+            return $query;
+        } 
+            
+        return $query->where('name', 'like', '%'.request()->search.'%')->orWhere('id', request()->search);
+    }
 }
