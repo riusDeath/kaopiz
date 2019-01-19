@@ -3,10 +3,13 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Part1;
 
 class Test extends Model
 {
     protected $table = 'test';
+
+    const UPDATED_AT = 'updated_at';
 
     protected $fillable = [
         'name', 
@@ -24,6 +27,9 @@ class Test extends Model
             
         return $query->where('name', 'like', '%'.request()->search.'%')->orWhere('id', request()->search);
     }
+
+
+    public function 
 
     public function part1()
     {

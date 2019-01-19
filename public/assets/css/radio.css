@@ -1,0 +1,33 @@
+input[type=radio]{
+	padding:20px;
+}
+.radio label:before {
+	border-radius: 3px;
+}
+.true + label:before {
+	content: url("../images/correct.gif");
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	font-size: 15px;
+	text-align: center;
+        line-height: 15px;
+	color: red;
+
+}
+input[type=radio]:checked + label{
+    color:red;
+}
+
+.false + label:before{
+	content: url("../images/incorrect.gif");
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	font-size: 15px;
+	text-align: center;
+        line-height: 15px;
+	color: red;
+}
+.true {
+    display: none;
+}
+.false {
+    display: none;
+}

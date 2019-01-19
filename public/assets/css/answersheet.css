@@ -1,0 +1,60 @@
+
+        		.box_ketqua .list .cau {
+				    width: 16.66%;
+				    float: left;
+				    text-align: center;
+				    margin-top: 15px;
+				}
+                        .box_ketqua .list .cau a:hover{
+                               background:#D9E8FB;     
+                               color:red;
+                        }
+				.box_ketqua .list a {
+				    display: block;
+				    width: 30px;
+				    height: 30px;
+				    padding: 6px 0 0 0;
+				    border-radius: 50%;
+				    border: 1px solid #999;
+				    margin: 0 auto;
+				    cursor: pointer;
+				}
+				
+				.box_ketqua .list {
+				    overflow-y: auto;
+				    border: 1px solid #ccc;
+				    border-top: 0;
+				}
+				.box_ketqua .head .timer {
+				    width: 50%;
+				    float: left;
+				    text-align: center;
+				    font-size: 25px;
+				    font-family: 'Roboto', sans-serif;
+				    font-weight: 300;
+				    margin-top: 2px;
+				}
+				.box_ketqua .head .check {
+				    width: 25%;
+				    float: left;
+				    text-align: center;
+				    color: #fff;
+				}
+				a {
+				     text-decoration: none;
+				    color: inherit;
+				    transition: 0.5s ease;
+				    -webkit-transition: 0.5s ease;
+				    background-color: transparent;
+				}
+				.box_ketqua .head {
+				    background: #ff6666;
+				    color: #fff;
+				    padding: 10px;
+				}
+				.box_ketqua .head .refresh {
+				    width: 25%;
+				    float: right;
+				    text-align: center;
+				    color: #fff;
+				}

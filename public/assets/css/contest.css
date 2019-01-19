@@ -1,0 +1,21 @@
+.my-advertisment{
+	border-radius: 30px;
+	border: 1px solid #4a86b8;
+	text-align: center;
+}
+.my-advertisment:hover{
+	background: #4a86b8;
+}
+.my-advertisment a{
+	text-decoration: none;
+	color:#0000ff;
+}
+.my-advertisment:hover a{
+	color:white ;
+}
+.center{
+	border:1px solid #9999ff;
+}
+.photo {
+	max-width: 400px;
+}
