@@ -22,8 +22,7 @@ class TestController extends Controller
     public function test(Request $request)
     {
     	$model = Test::findOrFail($request->id);
-    	
-    	dd($model->part3->media);
+    	// dd(count($model->listMediaPart3()));
     	return view('client.fulltest.test', compact('model'));
     }
 }

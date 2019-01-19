@@ -29,7 +29,46 @@ class Test extends Model
     }
 
 
-    public function 
+    public function listMediaPart3()
+    {
+        return \DB::table('media')
+                    ->join('part3', 'part3.media_id', '=', 'media.id')
+                    ->groupBy('part3.media_id')
+                    ->join('test', 'test.id', '=', 'part3.test_id')
+                    ->where('test.id', $this->id)
+                    ->get();
+
+    }
+
+    public function listPassagePart6()
+    {
+        return \DB::table('passages')
+                    ->join('part6', 'part6.passage_id', '=', 'passages.id')
+                    ->join('test', 'test.id', '=', 'part6.test_id')
+                    ->where('test.id', $this->id)
+                    ->get();
+
+    }
+
+    public function listPassagePart7()
+    {
+        return \DB::table('passages')
+                    ->join('part7', 'part7.passage_id', '=', 'passages.id')
+                    ->join('test', 'test.id', '=', 'part7.test_id')
+                    ->where('test.id', $this->id)
+                    ->get();
+
+    }
+
+    public function listMediaPart4()
+    {
+        return \DB::table('media')
+                    ->join('part_4', 'part_4.media_id', '=', 'media.id')
+                    ->join('test', 'test.id', '=', 'part_4.test_id')
+                    ->where('test.id', $this->id)
+                    ->get();
+
+    }
 
     public function part1()
     {

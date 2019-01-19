@@ -24,6 +24,7 @@ $(document).ready(function(){
         page = page + type ;
         fulltest_change_page(page);
     });
+
     function showQuestion(question){
         $('.question').hide();
         $('.'+question).show();
@@ -39,10 +40,13 @@ $(document).ready(function(){
             media_part3_4(media_id);
         }
     }
+
     function inputCheck(cau){
         var c = "cau_"+cau;
         $('.'+c).find("a").css("background-color", "#00acd6");
     }
+
+    // click part 1/ part 2 ...
     function part_start(start){
         $('.script_answer').hide();
         var fullest_page_next = "fullest_page_"+start;
