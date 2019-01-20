@@ -70,10 +70,14 @@
 			Route::get('/save', 'UserController@save')->name('user.save');
 	});
 
-	Route::group(['namespace' => 'Guides', 'prefix' => 'Grammar guides'], function(){
-			Route::get('/index', 'GrammarGuidesController@index')->name('grammar_guides.index');
-			Route::get('/delete', 'UserController@delete')->name('user.delete');
-			Route::get('/save', 'UserController@save')->name('user.save');
+	Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function(){
+			Route::get('/post.html', 'PostController@index')->name('post.index');
+			Route::get('/editpost/{$id}.html', 'PostController@edit')->name('post.edit');
+			Route::get('/newpost.html', 'PostController@add')->name('post.add');
+			Route::post('/newpost.html', 'PostController@create');
+			Route::get('/category', 'CategoryController@add')->name('category.add');
 	});
+
+
 
  ?>

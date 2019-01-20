@@ -19,4 +19,7 @@ class Post extends Model
     	'post_parent',
         'content', 
     ];
+
+    const UPDATED_AT = 'updated_at';
+    
 }
