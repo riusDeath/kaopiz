@@ -8,12 +8,11 @@
 @endsection
 @section('content')
 
-<title>TOEIC- TEST</title>
 <?php 
 $dem = 0; 
 ?>
-<section class="featured-courses ptb-100">
-    <div class="container">
+<section class="how-it-works red-bg ptb-100">
+<div class="container">
         <div class="col-md-8">
         <div class="panel-body" id="check">
             <label for="">Practice Full TEST TOEIC Reading, Listening </label>
@@ -31,7 +30,7 @@ $dem = 0;
                         Look at the picture and listen to the sentences. Choose the sentence that best describes the picture:
                 </div>
 
-            <div id="fulltest_content">
+                <div id="fulltest_content">
                     <div class="question fullest_page_{{ $dem+1 }} part1_{{ $dem+1 }}" data-page="1"  id="test_question_{{ $model->part1->get(0)->id }}" data-part="part1">
                         <div class="text-center" >
                             <img src="images/{{ $model->part1->get(0)->picture }}" alt="" width="400px">
@@ -67,7 +66,7 @@ $dem = 0;
                     </div> 
                     <?php 
                         for ($idx = 1; $idx < count($model->part1); $idx++)  {
-                        $dem++;
+                            $dem++;
                     ?>
                     <div  style="display:none" class="question fullest_page_{{ $dem+1 }} part1_{{ $dem+1 }}" data-page="{{ $dem+1 }}"  id="test_question_{{ $model->part1->get($idx)->id }}" data-part="part1">
                         <div class="text-center" >
@@ -138,28 +137,27 @@ $dem = 0;
                     <?php } ?>
 
  <!--------------------------------------------------------------------->
+               
                     <?php 
                         $index = $dem;
                         foreach ($model->listMediaPart3() as $media) {
                             $index++;
                     ?>
-                    <div  data-media="media_{{ $media->id }} " style="display:none" class="question fullest_page_{{ $index+1 }} part3_{{ $media->id }}" data-page="{{ $index+1 }}"  id="test_question_{{ $media->id }}" data-part="part3">
+                    <div  data-media="media_{{ $media->id }}" style="display:none" class="question fullest_page_{{ $index+1 }} part3_{{ $media->id }}" data-page="{{ $index+1 }}"  id="test_question_{{ $media->id }}" data-part="part3">
                         <div class="text-center" >
                             <audio controls>
-                                <source src="medias/{{ $media->mediaFile }}" type="audio/mpeg">
+                                <source src="/medias/{{ $media->mediaFile }}" type="audio/mpeg">
                             </audio>
                         </div>
-                        <div class="text-center script_answer_{{ $media->id }}" style="backgroud:red; display: none">
+                        <div class="text-center script_answer_{{ $index+1 }}" style="backgroud:red; display: none">
                             <pre>{{ $media->script_answer }}</pre>   
                         </div>
                     </div>
-                    <?php } ?>
-                    
-                    <?php 
-                        foreach($model->part3 as $part3){
-                            $dem++;
+                    <?php }
+                        foreach ($model->part3 as $part3) {
+                           $dem++;
                     ?>
-                    <div  style="display:none" class="question  media_{{ $part3->media_id }}" data-page="{{ $dem+1 }}"  id="test_question_{{ $model->part1->get(0)->id }}" data-part="3">
+                    <div  style="display:none" class="question  media_{{ $part3->media_id }}" data-page="<%=dem+1%>"  id="test_question_{{ $part3->id }}" data-part="3">
                         <p>Question: {{ $dem+1 }} <strong>{{ $part3->question }}</strong></p>
                         <ol id="que" type="A"  >
                             <li>
@@ -168,12 +166,12 @@ $dem = 0;
                             </li>
                             <li>
                                 <input type="radio" data-cau="{{ $dem+1 }}" data-part="1" data-question="{{ $part3->id }}" name="answer[{{ $part3->id }}][2]" value="B" class="sg-replace-icons radio_answer_listen_b{{ $dem+1 }}"> 
-                                <label>{{ $part3->optionB }}
+                                <label> {{ $part3->optionB }}
                                 </label>
                             </li>
                             <li>
                                 <input type="radio" data-cau="{{ $dem+1 }}" data-part="1" data-question="{{ $part3->id }}" name="answer[{{ $part3->id }}][2]" value="C" class="sg-replace-icons radio_answer_listen_c{{ $dem+1 }}"> 
-                                <label>  {{ $part3->optionC }}
+                                <label> {{ $part3->optionC }}
                                 </label>
                             </li>
                             <li>
@@ -184,9 +182,8 @@ $dem = 0;
                         </ol>
                     </div>
                     <?php } ?>
-
  <!--------------------------------------------------------------------->
-                    <?php 
+                   {{--  <?php 
                         foreach ($model->listMediaPart4() as $media) {
                             $index++;
                     ?>
@@ -270,7 +267,7 @@ $dem = 0;
                         foreach ($model->listPassagePart6() as $passage) {
                            $index++;
                     ?>
-                    <div  data-media="media_{{ $passage->id }}" style="display:none" class="question fullest_page_{{ $index+1 }} part6_{{ $passage->id }}" data-page="{{ $index+1 }}"  id="test_question_{{ $passage->id }}" data-part="part6">
+                    <div  data-media="Pass_{{ $passage->id }}" style="display:none" class="question fullest_page_{{ $index+1 }} part6_{{ $passage->id }}" data-page="{{ $index+1 }}"  id="test_question_{{ $passage->id }}" data-part="part6">
                         <div class="text-center" style="padding:30px; background: #a6e1ec; font-size: 16px; margin-bottom: 10px">
                             {{ $passage->content }}
                         </div>
@@ -281,7 +278,7 @@ $dem = 0;
                         foreach ($model->part6 as $p) {
                            $dem++;
                     ?>
-                    <div  style="display:none" class="question  media_{{ $p->passage_id }}" data-page="{{ $dem+1 }}"  id="test_question_{{ $p->id }}" data-part="part6">
+                    <div  style="display:none" class="question  Pass_{{ $p->passage_id }}" data-page="{{ $dem+1 }}"  id="test_question_{{ $p->id }}" data-part="part6">
                         <p>Question: {{ $dem+1 }} </p>
                         <ol id="que" type="A"  >
                             <li>
@@ -309,10 +306,10 @@ $dem = 0;
                     
 <!-------------------------------------------------------------------------------------->     
                     <?php 
-                        foreach ($model->listPassagePart6() as $passage) {
+                        foreach ($model->listPassagePart7() as $passage) {
                            $index++;
                     ?>
-                    <div  data-media="media_{{ $passage->id }}" style="display:none" class="question fullest_page_{{ $index++ }} part7_{{ $passage->id }}" data-page="{{ $index++ }}"  id="test_question_{{ $passage->id }}" data-part="part7">
+                    <div  data-media="Pass_{{ $passage->id }}" style="display:none" class="question fullest_page_{{ $index++ }} part7_{{ $passage->id }}" data-page="{{ $index++ }}"  id="test_question_{{ $passage->id }}" data-part="part7">
                         <div class="text-center" style="padding:30px; background: #a6e1ec; font-size: 16px; margin-bottom: 10px">
                             {{ $passage->content }}
                         </div>
@@ -323,7 +320,7 @@ $dem = 0;
                         foreach ($model->part7 as $p) {
                            $dem++;
                     ?>
-                    <div  style="display:none" class="question  media_{{ $p->passage_id }}" data-page="{{ $dem+1 }}"  id="test_question_{{ $p->id }}" data-part="part7">
+                    <div  style="display:none" class="question  Pass_{{ $p->passage_id }}" data-page="{{ $dem+1 }}"  id="test_question_{{ $p->id }}" data-part="part7">
                         <p>Question: {{ $dem+1 }} <strong>{{ $p->question }}</strong></p>
                         <ol id="que" type="A"  >
                             <li>
@@ -351,8 +348,8 @@ $dem = 0;
                     
 <!---------------------------------------------------------------->
                     </div>
-                    
-                
+                     --}}
+</div>                
                 <div class="pageing" id="fulltest_page" data-page="1" data-limit="{{ $dem }}" >
                     <div>Score:0/0 <input type="button" class="btn btn-default " id="btn-script-answer" value="Script" style="display: none"></div>
                     <div class="script-answer"></div>
@@ -446,8 +443,6 @@ $dem = 0;
         </div>
     </div>
 </div>
-</div>
-</section>
 
  <div class="modal fade" id="modal-message" >
     <div class="modal-dialog">
@@ -458,6 +453,7 @@ $dem = 0;
     </div>
 </div>
        
+</section>
         <!--<script src="<%=request.getContextPath()%>templates/js/time.js"></script>-->
 <!--        <script src="<%=request.getContextPath()%>/templates/js/demNguoc.js"></script> 
         <script src="<%=request.getContextPath()%>/templates/js/resultTest.js"></script>-->
@@ -552,6 +548,7 @@ $dem = 0;
         $('#timeStart').val(0);
         clearTimeout(t);
     }
+
 $(document).ready(function(){
     $(document).on('click', '#submitTest', function(e){
         e.preventDefault();
@@ -606,6 +603,7 @@ $(document).ready(function(){
         });
     });
 });
+
 
 </script>
 @endsection

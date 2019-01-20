@@ -88,6 +88,7 @@ $(document).ready(function(){
             media_part3_4(media_id);
         }
     }
+    
     function media_part3_4(media_id){
         $('.'+media_id).show();
     }

@@ -44,6 +44,7 @@ class Test extends Model
     {
         return \DB::table('passages')
                     ->join('part6', 'part6.passage_id', '=', 'passages.id')
+                    ->groupBy('part6.passage_id')
                     ->join('test', 'test.id', '=', 'part6.test_id')
                     ->where('test.id', $this->id)
                     ->get();
@@ -54,6 +55,7 @@ class Test extends Model
     {
         return \DB::table('passages')
                     ->join('part7', 'part7.passage_id', '=', 'passages.id')
+                    ->groupBy('part7.passage_id')
                     ->join('test', 'test.id', '=', 'part7.test_id')
                     ->where('test.id', $this->id)
                     ->get();
@@ -64,6 +66,7 @@ class Test extends Model
     {
         return \DB::table('media')
                     ->join('part_4', 'part_4.media_id', '=', 'media.id')
+                    ->groupBy('part_4.media_id')
                     ->join('test', 'test.id', '=', 'part_4.test_id')
                     ->where('test.id', $this->id)
                     ->get();
