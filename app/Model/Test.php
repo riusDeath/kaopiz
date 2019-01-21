@@ -32,6 +32,7 @@ class Test extends Model
     public function listMediaPart3()
     {
         return \DB::table('media')
+                    ->select('media.id as id', 'media.mediaFile as mediaFile', 'media.script_answer as script_answer')
                     ->join('part3', 'part3.media_id', '=', 'media.id')
                     ->groupBy('part3.media_id')
                     ->join('test', 'test.id', '=', 'part3.test_id')
@@ -43,6 +44,7 @@ class Test extends Model
     public function listPassagePart6()
     {
         return \DB::table('passages')
+                    ->select('passages.id as id', 'passages.content as content')
                     ->join('part6', 'part6.passage_id', '=', 'passages.id')
                     ->groupBy('part6.passage_id')
                     ->join('test', 'test.id', '=', 'part6.test_id')
@@ -54,6 +56,7 @@ class Test extends Model
     public function listPassagePart7()
     {
         return \DB::table('passages')
+                    ->select('passages.id as id', 'passages.content as content')
                     ->join('part7', 'part7.passage_id', '=', 'passages.id')
                     ->groupBy('part7.passage_id')
                     ->join('test', 'test.id', '=', 'part7.test_id')
@@ -65,6 +68,7 @@ class Test extends Model
     public function listMediaPart4()
     {
         return \DB::table('media')
+                    ->select('media.id as id', 'media.mediaFile as mediaFile', 'media.script_answer as script_answer')
                     ->join('part_4', 'part_4.media_id', '=', 'media.id')
                     ->groupBy('part_4.media_id')
                     ->join('test', 'test.id', '=', 'part_4.test_id')

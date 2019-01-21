@@ -22,7 +22,12 @@ class TestController extends Controller
     public function test(Request $request)
     {
     	$model = Test::findOrFail($request->id);
-    	// dd(count($model->listMediaPart3()));
+    	// dd($model->listMediaPart4());
     	return view('client.fulltest.test', compact('model'));
+    }
+
+    public function result(Request $request)
+    {
+        $answer = [];
     }
 }

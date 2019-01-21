@@ -43,22 +43,22 @@
 			<h2 class="comments-title">
 				One Reply to “Chào tất cả mọi người!”		
 			</h2>
-
 			<ol class="comment-list">
 				<li id="comment-1" class="comment even thread-even depth-1">
 					<article id="div-comment-1" class="comment-body">
 						<footer class="comment-meta">
 							<div class="comment-author vcard">
 								<img alt="" src="http://1.gravatar.com/avatar/d7a973c7dab26985da5f961be7b74480?s=100&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/d7a973c7dab26985da5f961be7b74480?s=200&amp;d=mm&amp;r=g 2x" class="avatar avatar-100 photo" height="100" width="100">						
-								<b class="fn"><a href="https://wordpress.org/" rel="external nofollow" class="url">Một người bình luận WordPress</a></b> <span class="says">says:</span>					
+								<b class="fn"><a href="#" rel="external nofollow" class="url">Một người bình luận WordPress</a></b> <span class="says">says:</span>					
 							</div><!-- .comment-author -->
 							<div class="comment-metadata">
 									<a href="http://localhost:8888/wordpress/2018/12/06/chao-moi-nguoi/#comment-1">
 										<time datetime="2018-12-06T09:04:42+00:00">
-										6 December, 2018 at 9:04 am							</time>
+										6 December, 2018 at 9:04 am
+										</time>
 									</a>
-									<span class="edit-link"><a class="comment-edit-link" href="http://localhost:8888/wordpress/wp-admin/comment.php?action=editcomment&amp;c=1">Edit</a></span>					</div><!-- .comment-metadata -->
-
+									<span class="edit-link"><a class="comment-edit-link" href="http://localhost:8888/wordpress/wp-admin/comment.php?action=editcomment&amp;c=1">Edit</a></span>
+							</div><!-- .comment-metadata -->
 						</footer>
 						<!-- .comment-meta -->
 						<div class="comment-content">
