@@ -39,10 +39,6 @@
                 }
             });
 
-            $("form").on("submit",function(event) {
-                event.preventDefault();
-                return false;
-            });
         });
         
         /* Home Slides

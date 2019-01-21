@@ -52,9 +52,9 @@
         <!-- Start Search Popup Area -->
         <div id="search-area">
             <button type="button" class="close">×</button>
-            <form>
-                <input type="search" value="" placeholder="Search Kewword(s)">
-                <button type="submit" class="btn btn-primary">Search</button>
+            <form method="get" action="{{ route('home') }}">
+                <input type="search" value="" placeholder="Search Kewword(s)" name="search">
+                <input type="submit" class="btn btn-primary" value="Search">
             </form>
         </div>
         <!-- End Search Popup Area -->

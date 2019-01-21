@@ -23,6 +23,17 @@ class Post extends Model
 
     const UPDATED_AT = 'updated_at';
 
+    public function scopesearch($query)
+    {
+        if (empty(request()->search)) {
+            return $query;
+        } 
+            
+        return $query->where('title', 'like', '%'.request()->search.'%')
+                    ->orWhere('content', 'like', '%'.request()->search.'%')
+                    ->orWhere('post_excerpt', 'like', '%'.request()->search.'%');
+    }
+
     public function post_parent()
     {
        return $this->belongsTo('App\Model\Post', 'post_modified', 'id');

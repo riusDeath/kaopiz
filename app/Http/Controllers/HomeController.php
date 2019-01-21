@@ -27,8 +27,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $posts = Post::where('status', '1')->orderBy('id')->paginate(12);
-        dd($posts);
+        $posts = Post::search()->where('status', '1')->orderBy('id')->paginate(12);
+
         return view('index', compact('posts'));
     }
 
