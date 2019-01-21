@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="assets/css/radio.css">       
 <link rel="stylesheet" href="assets/css/test.css">     
 <link rel="stylesheet" href="assets/css/answersheet.css"> 
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 @section('content')
 <?php 
@@ -16,7 +17,7 @@
     <div class="col-md-8 ">
             <div class="panel-body" id="check">
                 <label for="">Practice Full TEST {{ $model->id }} TOEIC Reading, Listening </label>
-                <form data-testid=""  action="{{ route('contest.fulltest.test.result') }}" id="fulltest_part_head" method="post" >
+                <form data-testid=""  action="{{ route('contest.fulltest.test.result', ['id' => $model->id]) }}" id="fulltest_part_head" method="get" >
                     <input type="hidden" name="test_id" value="{{ $model->id }}" >
                     <div class="col-md-1.7 btn  btn-warning action part part1" data-part="part1" data-start="1" >Part 1</div>
                     <div class="col-md-1.7 btn  btn-warning part part2" data-part="part2" data-start="{{ count($model->part1)+1 }}" >Part 2</div>
@@ -434,7 +435,11 @@
 @section('script')
 <script src="assets/js/question_answer.js"></script>
 <script>
-    
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
     var c = localStorage.getItem("timer");
     if(c == null || c==0){
         c = $('#timeStart').val();
@@ -464,9 +469,12 @@
     }
         var id = form.data("testid");
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: form.attr('action'),
-            data: form.serialize(),
+            // data: form.serialize(),
+            data:{
+                                id: id,
+                            },
             dataType: 'JSON',
             success: function(data){
                 $("input[type=radio]:checked").addClass("false");

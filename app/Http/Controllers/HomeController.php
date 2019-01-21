@@ -16,6 +16,12 @@ class HomeController extends Controller
     	return view('login');
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->back();
+    }
+
     public function postlogin(LoginRequest $request)
     {
     	if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {

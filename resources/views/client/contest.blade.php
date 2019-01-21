@@ -35,7 +35,7 @@
                                 <i class="icofont-architecture-alt"></i>
                             </div>
                             
-                            <h3>Engineering</h3>
+                            <h3>Listening Test</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             
                             <a href="#" class="read-more">
@@ -52,7 +52,7 @@
                                 <i class="icofont-database"></i>
                             </div>
                             
-                            <h3>Data Science</h3>
+                            <h3>Reading Test</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             
                             <a href="#" class="read-more">

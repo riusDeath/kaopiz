@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/logout', 'HomeController@logout')->name('logout');
 Route::get('/login', 'HomeController@login')->name('login');
 Route::post('/login', 'HomeController@postlogin')->name('login');
 
@@ -22,7 +23,7 @@ Route::group(['namespace' => 'Client'], function(){
 		Route::get('/contest.html', 'TestController@index')->name('contest');
 		Route::get('/Full-test.html', 'TestController@fulltest')->name('contest.full-test');
 		Route::get('/Full-test/test_{id}.html', 'TestController@test')->name('contest.fulltest.test');
-		Route::get('/result{id}.html', 'TestController@result')->name('contest.fulltest.test.result');
+		Route::get('/result{id}', 'TestController@result')->name('contest.fulltest.test.result');
 	});
 
 	Route::group(['prefix' => 'Post'], function(){

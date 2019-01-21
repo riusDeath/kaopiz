@@ -24,13 +24,19 @@
 							<div class="classynav">
 								<ul>
                                    
-                                    <li><a href="#">About Us</a>
+                                    <li><a href="#">Account</a>
                                         <ul class="dropdown">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="admission.html">Admission</a></li>
-                                            <li><a href="teacher-style-one.html">Teacher Style One</a></li>
-                                            <li><a href="teacher-style-two.html">Teacher Style Two</a></li>
-                                            <li><a href="single-teacher.html">Teacher Details</a></li>
+                                        	@if(Auth::check())
+                                        		@if(Auth::user()->role == 0)
+                                            	<li><a href="#">{{ Auth::user()->name }}</a></li>
+                                            	@else
+                                            	<li><a href="{{ route('dashboard') }}">Admin</a></li>
+                                            	@endif
+                                            	<li><a href="{{ route('logout') }}">Log out</a></li>
+                                            @else
+                                            <li><a href="{{ route('login') }}">Log in</a></li>
+                                            <li><a href="admission.html">Register</a></li>
+                                            @endif
                                         </ul>
                                     </li>
                                    
