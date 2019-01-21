@@ -32,7 +32,7 @@ class Part4 extends Model
 
     public function test()
     {
-        $this->hasOne('App\Model\Test', 'test_id', 'id');
+        return $this->hasOne('App\Model\Test', 'test_id', 'id');
     }
 
 }

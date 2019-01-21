@@ -23,7 +23,7 @@ class Part3 extends Model
     
     public function media()
     {
-        return $this->hasOne(Media::class, 'media_id', 'id');    
+        return $this->belongsTo(Media::class, 'media_id', 'id');   
     }
 
     public function level()

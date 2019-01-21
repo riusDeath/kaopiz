@@ -72,12 +72,15 @@
 
 	Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function(){
 			Route::get('/post.html', 'PostController@index')->name('post.index');
-			Route::get('/editpost/{$id}.html', 'PostController@edit')->name('post.edit');
+			Route::get('/edit/{id}', 'PostController@edit')->name('post.edit');
+			Route::post('/edit/{id}', 'PostController@update')->name('post.edit');
+			Route::get('/delete/{id}', 'PostController@delete')->name('post.delete');
 			Route::get('/newpost.html', 'PostController@add')->name('post.add');
 			Route::post('/newpost.html', 'PostController@create');
 			Route::get('/category', 'CategoryController@add')->name('category.add');
+			Route::get('/post.revisions{id}.html', 'PostController@revision')->name('post.revisions');
+			Route::get('/post.restore{id}.html', 'PostController@restore')->name('post.restore');
 	});
-
 
 
  ?>

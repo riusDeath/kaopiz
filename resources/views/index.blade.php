@@ -9,6 +9,7 @@
         <section class="upcoming-events-area events-two ptb-100">
             <div class="container">
                 <div class="row">
+                    @foreach($posts as $post)
                     <div class="col-lg-12 col-md-12">
                         <div class="single-event mb-0">
                             <div class="row m-0">
@@ -16,19 +17,19 @@
                                     <figure>
                                         <a href="#">
                                             <span class="image" style="background-image: url(assets/img/event-one.jpg);"></span>
-                                            <img src="assets/img/event-one.jpg" alt="event">
+                                            <img src="{{ $post->avatar }}" alt="event">
                                         </a>
                                         
                                         <div class="date">
-                                            <span>18 Jan, 2019</span>
+                                            <span>{{ date_format($post->created_at) }}</span>
                                         </div>
                                     </figure>
                                 </div>
                                 
                                 <div class="col-lg-6 col-md-6 p-0">
                                     <div class="event-content">
-                                        <h3>Web Development</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <h3>{{ $post->title }}</h3>
+                                        <p>{{ $post->post_excerpt }}</p>
                                         
                                         <div class="where-when">
                                             <ul class="pull-left">
@@ -49,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                    @endforeach
                     <div class="col-lg-12 col-md-12">
                         <div class="single-event mb-0">
                             <div class="row m-0">

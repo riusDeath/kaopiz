@@ -13,21 +13,36 @@
 @endsection
 @section('content')
 <div class="box-body pad">
-	<form role="form" action="{{ route('post.add') }}" method="post" enctype="multipart/form-data">
+	 @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+	<form role="form" action="" method="post" enctype="multipart/form-data">
 		<div class="col-md-9">
 				@csrf
 				<div class="box-body">
 					<div class="col-md-12">
-						<div class="box">							
+						<div class="box">		
+						<!-- /.box-body -->
+							<div class="form-group">
+								<label for="">Post excerpt:</label>
+								<textarea name="post_excerpt" class="textarea" placeholder="Place some text here"
+								style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $model->post_excerpt }}</textarea> 
+							</div>					
 							<!-- /.box-header -->
 							<div class="form-group">
-			                  <label for="exampleInputFile">File input</label>
-			                  <input type="file" id="exampleInputFile" name="avatar">
-
-			                  <p class="help-block">Choose avatar</p>
+			                  	<label for="exampleInputFile">File input</label>
+			                  	<input type="file" id="exampleInputFile" name="picture" value="{{ $model->avatar }}">
+								<img src="images/{{ $model->avatar }}" alt="">
+			                  	<p class="help-block">Choose avatar</p>
 			                </div>
 							<h3 class="box-title">Content</h3>
-							<textarea class="ckeditor" name="content" cols="80" rows="10">{{ old('content') }}</textarea>
+							<textarea class="ckeditor" name="content" cols="80" rows="10">{{ $model->content }}</textarea>
 							<script>
 								CKEDITOR.replace( 'content', {
 									filebrowserBrowseUrl: 'http://localhost:8888/web-toeic/public/ckfinder/ckfinder.html',
@@ -39,14 +54,11 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Title: </label>
-							<input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="Question" name="detail" >
+							<input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="Question" name="title" value="{{ $model->title }}">
 						</div>
 					</div>
 				</div>
-				<!-- /.box-body -->
-				
-				<textarea name="post_excerpt" class="textarea" placeholder="Place some text here"
-				style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea> 
+
 				
 </div>
 <div class="col-md-3">
@@ -60,35 +72,24 @@
 			<p class="submit"><input type="submit" name="save" id="save" class="button" value="Save"></p></div>
 			<div class="form-group">
 					<div class="radio">
-						<div>View mode:</div>
+						<div>View mode: </div>
 						<label>
-							<input type="radio" name="status" id="optionsRadios1" value="0" checked="">
+							<input type="radio" name="status" id="optionsRadios1" value="1" {{ $model->status==1?"checked":"" }}>
 							Show
 						</label>
 					</div>
 					<div class="radio">
 						<label>
-							<input type="radio" name="status" id="optionsRadios2" value="1">
+							<input type="radio" name="status" id="optionsRadios2" value="0" {{ $model->status==0?"checked":"" }}>
 							Hide
 						</label>
 					</div>
 
 				</div>
-
-			<div id="minor-publishing-actions">
-			<div id="save-action">
-				<input type="submit" name="save" id="save-post" value="post date" class="button">
-				<span class="spinner"></span>
-			</div>
-			</div>
 			</div><!-- .misc-pub-section -->
 
 			<div class="misc-pub-section curtime misc-pub-curtime">
-				<input type="date" name="post_date">
-				<p>
-				<a href="#edit_timestamp" class="save-timestamp hide-if-no-js button">OK</a>
-				<a href="#edit_timestamp" class="cancel-timestamp hide-if-no-js button-cancel">Cancel</a>
-				</p>
+				<input type="date" name="post_date" value="{{ $model->post_date }}" required="">
 			</div>
 
 			</div>
@@ -96,12 +97,15 @@
 
 			<div id="major-publishing-actions">
 			<div id="delete-action">
-			<a class="submitdelete deletion" href="http://localhost:8888/wordpress/wp-admin/post.php?post=4&amp;action=trash&amp;_wpnonce=cd3a9c672e">Move to Trash</a></div>
+			<div class="misc-pub-section misc-pub-revisions">
+				Revisions: <b>{{ $model->post_modified!=0?count($model->Revisions()):"1" }}</b>	<a class="hide-if-no-js" href="{{ route('post.revisions', ['id' => $model->id]) }}"><span aria-hidden="true">Browse</span></a>
+			</div>
 
 			<div id="publishing-action">
 			<span class="spinner"></span>
-				<input type="submit" name="publish" id="publish" class="button button-primary button-large" value="Publish"></div>
+				<input type="submit" name="publish" id="publish" class="button button-primary button-large" value="Update"></div>
 			<div class="clear"></div>
+			</div>
 			</div>
 		</div>
 
@@ -116,7 +120,7 @@
     						@if(count($categories) > 0)
     						<select name="category_id" id="select-category" class="form-control select-category" required="required">
     						@foreach($categories as $category)
-    							<option value="{{ $category->id }}">{{ $category->name }}</option>
+    							<option value="{{ $category->id }}" {{ $model->category_id==$category->id?"select":"" }}>{{ $category->name }}</option>
     						@endforeach
     						</select>
     						@else

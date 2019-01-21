@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
 use App\Model\Test;
 use App\Model\User;
+use App\Model\Post;
 
 class HomeController extends Controller
 {
@@ -26,8 +27,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('index');
+        $posts = Post::where('status', '1')->orderBy('id')->paginate(12);
+        dd($posts);
+        return view('index', compact('posts'));
     }
 
-    
 }

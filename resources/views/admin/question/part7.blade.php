@@ -10,6 +10,15 @@
             <div class="box-header">
                 <h3 class="box-title">Add Question Part 7: Reading comprehen
                 </h3>
+                 @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <!-- tools box -->
                 <div class="pull-right box-tools">
                 <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"

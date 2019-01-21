@@ -22,7 +22,7 @@ class Part extends Model
 
             // save media
             $path = $request->mediaFile->storeAs('medias', $filename);
-            $media->mediaFile = $path;
+            $media->mediaFile = $filename;
         }
         $media->save();
 

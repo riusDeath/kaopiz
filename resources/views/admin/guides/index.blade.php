@@ -30,27 +30,21 @@
 			</div>
 		</form>
 	</div>
-	<div class="input-group col-md-9" style="width: 200px; margin: 12px">
-		<button type="button" class="btn btn-sm btn-success add" data-toggle="modal" data-target="#modal-add">
-                New Test
-        </button>
-		{{-- <a href="{{ route('test.add') }}">Create New Test</a> --}}
-	</div>
 	<!-- /.box-header -->
 	<div class="box-body">
 		<table class="table table-bordered table-hover" id="table_test">
 			<tbody><tr>
 				<th>index</th>
-				<th>Title</th>
+				<th>author</th>
 				<th>Status</th>
-				<th>View</th>
+				<th>Date</th>
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
 			@foreach($posts as $post)
 			<tr>
 				<td>{{ ($posts ->currentpage()-1) * $posts ->perpage() + $loop->index + 1 }}</td>
-				<td>{{ $post->title }}</td>
+				<td>{{ $post->getauthor['name'] }}</td>
 				<td>
 					@if($post->status == 1)
 					<span class="badge bg-red">Show</span>
@@ -59,15 +53,19 @@
 					@endif
 				</td>
 				<td>
-					{{ $post->created_at }}
+					@if($post->post_modified == 0)
+					{{ $post->updated_at }}
+					@else 
+					Last Modified {{ $post->updated_at }}
+					@endif
 				</td>
 				<td class="text-center">
-                    <a href="{{ route('post.edit', ['id' => $post->id]) }}" class="btn btn-sm btn-success edit">
+                    <a href="{{ route('post.edit', ['id' => $post->id]) }}" class="btn btn-sm btn-success">
                         <i class="fa fa-fw fa-edit"></i>
                     </a>
 				</td>
 				<td class="text-center">
-					<button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $post->id }}" linkUrl="{{ route('posts.delete', ['id' => $post->id])}}" >
+					<button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $post->id }}" linkUrl="{{ route('post.delete', ['id' => $post->id])}}" data-table="table_test">
                         <i class="fa fa-fw fa-times-circle" ></i>
                     </button>
 				</td>
@@ -85,7 +83,7 @@
 <!-- /.box-body -->
 
 </div>
-!
 @endsection
 @section('script')
+<script src="{{ asset('/admin-assets/js/admin-mytest.js') }}"></script>
 @endsection

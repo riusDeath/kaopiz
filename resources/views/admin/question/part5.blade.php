@@ -5,6 +5,15 @@
             <div class="box-header with-border">
               <h3 class="box-title"></h3>
             </div>
+             @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
           <!-- /.box-header -->
           <!-- form start -->
             <div class="box-header">

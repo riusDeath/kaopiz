@@ -13,17 +13,30 @@
 @endsection
 @section('content')
 <div class="box-body pad">
+	 @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 	<form role="form" action="{{ route('post.add') }}" method="post" enctype="multipart/form-data">
 		<div class="col-md-9">
 				@csrf
 				<div class="box-body">
 					<div class="col-md-12">
 						<div class="box">
-		
+							<div class="form-group">
+								<label for="">Post excerpt:</label>
+								<textarea name="post_excerpt" class="textarea" placeholder="Place some text here"
+								style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea> 
+							</div>
 							<!-- /.box-header -->
 							<div class="form-group">
 			                  <label for="exampleInputFile">File input</label>
-			                  <input type="file" id="exampleInputFile" name="avatar">
+			                  <input type="file" id="exampleInputFile" name="picture">
 
 			                  <p class="help-block">Choose avatar</p>
 			                </div>
@@ -40,14 +53,11 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Title: </label>
-							<input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="Question" name="detail" >
+							<input required="" type="text" class="form-control" id="exampleInputEmail1" placeholder="Question" name="title" >
 						</div>
 					</div>
 				</div>
-				<!-- /.box-body -->
 				
-				<textarea name="post_excerpt" class="textarea" placeholder="Place some text here"
-				style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea> 
 				
 </div>
 <div class="col-md-3">
