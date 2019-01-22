@@ -15,9 +15,9 @@ $dem = 0;
 	<div class="container"> 
 		<div class="row">
 			<div class="col-md-9 colQuestion">
-				<form   action="#" id="fulltest_part_head" method="post" >
+				<form   action="{{ route('test.result') }}" id="fulltest_part_head" method="post" data-part="part1">
 					<input type="hidden" value="part1" name="part"/>
-					<div class="question fullest_page_{{ $dem+1 }} part1_{{ $dem+1 }}" data-page="1"  id="test_question_{{ $part1s->get(0)->id }}" data-part="part1">
+					<div class="question fullest_page_{{ $dem+1 }} part1_{{ $dem+1 }}" data-page="1"  data-id="{{ $part1s->get(0)->id }}" data-part="part1">
 						<div class="text-center" >
 							<img src="images/{{ $part1s->get(0)->picture }}" alt="" style="width:300px">
 							<div class="col-md-12">
@@ -57,7 +57,7 @@ $dem = 0;
 								$part1  = $part1s->get($idx);
 								$dem++;
 								?>
-								<div  style="display:none" class="question fullest_page_{{ $dem+1 }} part1_{{ $dem+1 }}" data-page="{{ $dem+1 }}"  id="test_question_<%=part1.getId()%>" data-part="part1">
+								<div  style="display:none" class="question fullest_page_{{ $dem+1 }} part1_{{ $dem+1 }}" data-page="{{ $dem+1 }}"  data-id="{{ $part1->id }}" data-part="part1">
 									<div class="text-center" >
 										<img src="images/{{ $part1->picture }}" alt="" style="width:300px">
 										<div class="col-md-12">
@@ -186,7 +186,7 @@ $dem = 0;
                         radio_answer = radio_answer.toLowerCase();
                         $('.'+radio_answer).removeClass("false");
                         $('.'+radio_answer).addClass("true");
-                        // console.log(data['answer']);
+                        console.log(data['answer']);
                     }
                 });
             $('.fullest_page_'+page).find(".submitagain").show();
@@ -205,7 +205,7 @@ $dem = 0;
                     data: {part: part, id: id},
                     dataType: 'JSON',
                     success: function(data){
-
+                    	console.log(data);
                         $.each(data, function(key, value){
                             var radio_answer = "radio_answer_"+value+id;
                             radio_answer = radio_answer.toLowerCase();

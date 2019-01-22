@@ -1,4 +1,5 @@
-$(document).ready(function(){
+<script>
+    $(document).ready(function(){
     //change page in score
     $("#fulltest_page").find(".change_page").bind("click",function(e){
         e.preventDefault();
@@ -34,19 +35,18 @@ $(document).ready(function(){
                     data: {part: part, id: idQuestion},
                     dataType: 'JSON',
                     success: function(data){
-                        var radio_answer = "radio_answer_"+data+page;
+                        var radio_answer = "radio_answer_"+data['answer']+page;
                         radio_answer = radio_answer.toLowerCase();
                         $('.'+radio_answer).removeClass("false");
                         $('.'+radio_answer).addClass("true");
-
+                        console.log(data['answer']);
                     }
                 });
             $('.fullest_page_'+page).find(".submitagain").show();
             $("#fulltest_page").find('.submitagain'+page).show();
             $("#fulltest_page").find('.submitScript'+page).show();
             } else {
-                // alert("Answer is empty....");
-                alert(part);
+                alert("Answer is empty....");
                 return false;
             } 
         } else {
@@ -58,8 +58,10 @@ $(document).ready(function(){
                     data: {part: part, id: id},
                     dataType: 'JSON',
                     success: function(data){
-                        $.each(data, function(key, value){
+                        console.log(data);
+                        $.each(data['answers'], function(key, value){
                             var radio_answer = "radio_answer_"+value+id;
+                            console.log(radio_answer);
                             radio_answer = radio_answer.toLowerCase();
                             $('.'+radio_answer).removeClass("false");
                             $('.'+radio_answer).addClass("true");
@@ -100,3 +102,4 @@ $(document).ready(function(){
     });
 });
 
+</script>

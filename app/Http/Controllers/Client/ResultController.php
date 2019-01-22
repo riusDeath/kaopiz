@@ -25,6 +25,7 @@ class ResultController extends Controller
     		return response()->json(compact('answer'));
     	} else if ($part == "part2") {
     		$part = Part2::find($id);
+    		$answer = $part->answer;
     		return response()->json(compact('answer'));
     	} else if ($part == "part3") {
     		$part3 = Part3::where('media_id', $id)->get();
@@ -50,7 +51,7 @@ class ResultController extends Controller
     		$part6 = Part6::where('passage_id', $id)->get();
     		$answers = [];
     		foreach ($part6 as $value) {
-    			array_push($answers, $value->answer);
+    			array_push($answers, $value->answer."".$value->id);
     		}
 
     		return response()->json(compact('answers'));
@@ -58,7 +59,7 @@ class ResultController extends Controller
     		$part7 = Part7::where('passage_id', $id)->get();
     		$answers = [];
     		foreach ($part7 as $value) {
-    			array_push($answers, $value->answer);
+    			array_push($answers, $value->answer."".$value->id);
     		}
 
     		return response()->json(compact('answers'));
