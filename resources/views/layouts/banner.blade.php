@@ -23,7 +23,7 @@
 
                     <div class="watch-video">
                         <a href="https://www.youtube.com/watch?v=TOdvCH1vA80" class="popup-video"><i class="icofont-ui-play"></i></a>
-                        <h4>Watch Video</h4>
+                        <h4>{{ isset($mess)?$mess:"welcome" }}</h4>
                     </div>
                 </div>
             </div>

@@ -40,13 +40,21 @@
                                         </ul>
                                     </li>
                                    
-                                    <li><a href="#">Courses</a>
-                                        <ul class="dropdown">
-                                            <li><a href="courses-style-one.html">Courses Style One</a></li>
-                                            <li><a href="courses-style-two.html">Courses Style Two</a></li>
-                                            <li><a href="single-courses.html">Courses Details</a></li>
-                                        </ul>
-                                    </li>
+                                    <li class="cn-dropdown-item has-down pr12"><a href="#">Categories</a>
+										<ul class="dropdown">
+											@foreach($categories as $category)
+											<li class="has-down"><a href="{{ route('client.post.category', ['id', $category->id]) }}">{{ $category->name }}</a>
+												<ul class="dropdown">
+													@foreach($category->category_child as $category_child)
+													<li><a href="{{ route('client.post.category', ['id', $category_child->id]) }}">{{ $category_child->name }}</a></li>
+													@endforeach
+												</ul>
+												<span class="dd-trigger"></span><span class="dd-arrow"></span>
+											</li>
+											@endforeach
+										</ul>
+									</li>
+								</li>
                                     
                                     
 									<li><a href="{{ route('contest') }}">Contest</a>
@@ -54,25 +62,6 @@
 											<li><a href="{{ route('contest.full-test') }}">Full Test</a></li>
                                             <li><a href="{{ route('contest.listeing.index') }}">Listening Test</a></li>
                                             <li><a href="{{ route('contest.reading.index') }}">Reading Test</a></li>
-										</ul>
-									</li>
-									
-									<li><a href="#">Blog</a>
-										<ul class="dropdown">
-											<li><a href="blog-style-one.html">Blog Style One</a></li>
-                                            <li><a href="blog-style-two.html">Blog Style Two</a></li>
-                                            <li><a href="blog-style-three.html">Blog Style Three</a></li>
-                                            <li><a href="single-blog.html">Blog Details</a></li>
-										</ul>
-									</li>
-									
-									<li><a href="#">Shop</a>
-										<ul class="dropdown">
-											<li><a href="shop-style-one.html">Shop Style One</a></li>
-                                            <li><a href="shop-style-two.html">Shop Style Two</a></li>
-                                            <li><a href="single-shop.html">Shop Details</a></li>
-                                            <li><a href="cart.html">Cart</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
 										</ul>
 									</li>
 									

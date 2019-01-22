@@ -53,4 +53,14 @@ class Post extends Model
                     ->orderBy('updated_at', 'desc')
                     ->get();
     }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Model\Category', 'category_id', 'id');
+    }
+
+    public function category_child()
+    {
+        return $this->belongsTo('App\Model\Category', 'category_id', 'category_parent');
+    }
 }

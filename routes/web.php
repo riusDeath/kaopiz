@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Client', 'middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'Post'], function(){
 		Route::get('/detail{id}.html', 'PostController@detail')->name('client.post.detail');
+		Route::get('/client/category/post/{id}.html', 'PostController@category')->name('client.post.category');
 	});
 
 	Route::group(['prefix' => 'Listening'], function(){
