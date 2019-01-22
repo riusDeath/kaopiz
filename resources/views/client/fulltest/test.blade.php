@@ -17,7 +17,7 @@
     <div class="col-md-8 ">
             <div class="panel-body" id="check">
                 <label for="">Practice Full TEST {{ $model->id }} TOEIC Reading, Listening </label>
-                <form data-testid=""  action="{{ route('contest.fulltest.test.result', ['id' => $model->id]) }}" id="fulltest_part_head" method="get" >
+                <form data-testid="{{ $model->id }}"  action="{{ route('contest.fulltest.test.result', ['id' => $model->id]) }}" id="fulltest_part_head" method="post" >
                     <input type="hidden" name="test_id" value="{{ $model->id }}" >
                     <div class="col-md-1.7 btn  btn-warning action part part1" data-part="part1" data-start="1" >Part 1</div>
                     <div class="col-md-1.7 btn  btn-warning part part2" data-part="part2" data-start="{{ count($model->part1)+1 }}" >Part 2</div>

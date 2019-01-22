@@ -30,4 +30,10 @@ Route::group(['namespace' => 'Client'], function(){
 		Route::get('/detail{id}.html', 'PostController@detail')->name('client.post.detail');
 	});
 
+	Route::group(['prefix' => 'Listening'], function(){
+		Route::get('/Listening.html', 'ListeingController@index')->name('contest.listeing.index');
+		Route::get('/Listening.part1.html', 'ListeingController@part1')->name('contest.listeing.part1');
+		Route::get('/Listening.part1.test_{id}.html', 'ListeingController@part1test')->name('contest.listeing.part1.test');
+		Route::get('/Listening.part2.test_{id}.html', 'ListeingController@part2test')->name('contest.listeing.part2.test');
+	});
 });

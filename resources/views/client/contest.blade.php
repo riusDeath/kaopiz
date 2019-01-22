@@ -38,7 +38,7 @@
                             <h3>Listening Test</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             
-                            <a href="#" class="read-more">
+                            <a href="{{ route('contest.listeing.index') }}" class="read-more">
                                 <span class="left"><i class="icofont-rounded-double-right"></i></span> 
                                 Read More 
                                 <span class="right"><i class="icofont-rounded-double-right"></i></span>
