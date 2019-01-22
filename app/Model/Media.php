@@ -14,12 +14,12 @@ class Media extends Model
         'script_answer',
     ];
 
-    public function Part3()
+    public function part3()
     {
     	return $this->hasMany('App\Model\Part3', 'media_id', 'id');
     }
 
-    public function Part4()
+    public function part4()
     {
     	return $this->hasMany('App\Model\Part4', 'media_id', 'id');
     }

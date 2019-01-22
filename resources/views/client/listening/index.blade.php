@@ -23,7 +23,7 @@
 				</a>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<a href="{{ route('contest.listeing.part1') }}">
+				<a href="{{ route('contest.listeing.part2') }}">
 					<div class="work-process">
 						<i class="icofont-checked"></i>
 						<h3>Partr2: Question-Response</h3>
@@ -32,7 +32,7 @@
 				</a>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<a href="{{ route('contest.listeing.part1') }}">
+				<a href="{{ route('contest.listeing.part3') }}">
 					<div class="work-process">
 						<i class="icofont-checked"></i>
 						<h3>Partr3: Short conversation</h3>

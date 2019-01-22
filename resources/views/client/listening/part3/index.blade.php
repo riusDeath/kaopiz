@@ -13,12 +13,12 @@
 			<h3>Choose test<span>?</span></h3>
 		</div>
 		<div class="row">
-			@foreach($part1s as $part1)
+			@foreach($part3s as $part3)
 			<div class="col-lg-12 col-md-12">
-				<a href="{{ route('contest.listeing.part1.test', ['id' => $part1->level_id]) }}">
+				<a href="{{ route('contest.listeing.part3.test', ['id' => $part3->level_id]) }}">
 					<div class="work-process">
 						<i class="icofont-checked"></i>
-						<h3>{{ $part1->level->level }}</h3>
+						<h3>{{ $part3->level->level }}</h3>
 						<p>....</p>
 					</div>
 				</a>

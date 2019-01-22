@@ -33,7 +33,14 @@ Route::group(['namespace' => 'Client'], function(){
 	Route::group(['prefix' => 'Listening'], function(){
 		Route::get('/Listening.html', 'ListeingController@index')->name('contest.listeing.index');
 		Route::get('/Listening.part1.html', 'ListeingController@part1')->name('contest.listeing.part1');
-		Route::get('/Listening.part1.test_{id}.html', 'ListeingController@part1test')->name('contest.listeing.part1.test');
-		Route::get('/Listening.part2.test_{id}.html', 'ListeingController@part2test')->name('contest.listeing.part2.test');
+		Route::get('/Listening.part2.html', 'ListeingController@part2')->name('contest.listeing.part2');
+		Route::get('/Listening.part3.html', 'ListeingController@part3')->name('contest.listeing.part3');
+		Route::get('/Listening.part1.level_{id}.html', 'ListeingController@part1test')->name('contest.listeing.part1.test');
+		Route::get('/Listening.part2.level_{id}.html', 'ListeingController@part2test')->name('contest.listeing.part2.test');
+		Route::get('/Listening.part3.level_{id}.html', 'ListeingController@part3test')->name('contest.listeing.part3.test');
+	});
+
+	Route::group(['prefix' => 'Reading'], function(){
+		Route::get('/Reading.html', 'ReadingController@index')->name('contest.reading.index');
 	});
 });

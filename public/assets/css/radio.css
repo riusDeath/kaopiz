@@ -5,7 +5,7 @@ input[type=radio]{
 	border-radius: 3px;
 }
 .true + label:before {
-	content: url("../images/correct.gif");
+	content: url("../img/correct.gif");
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
 	font-size: 15px;
 	text-align: center;
@@ -18,7 +18,7 @@ input[type=radio]:checked + label{
 }
 
 .false + label:before{
-	content: url("../images/incorrect.gif");
+	content: url("../img/incorrect.gif");
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
 	font-size: 15px;
 	text-align: center;

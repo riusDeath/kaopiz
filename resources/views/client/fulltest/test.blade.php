@@ -17,7 +17,7 @@
     <div class="col-md-8 ">
             <div class="panel-body" id="check">
                 <label for="">Practice Full TEST {{ $model->id }} TOEIC Reading, Listening </label>
-                <form data-testid="{{ $model->id }}"  action="{{ route('contest.fulltest.test.result', ['id' => $model->id]) }}" id="fulltest_part_head" method="post" >
+                <form data-testid="{{ $model->id }}"  action="{{ route('contest.fulltest.test.result', ['id' => $model->id]) }}" id="fulltest_part_head" method="GET" >
                     <input type="hidden" name="test_id" value="{{ $model->id }}" >
                     <div class="col-md-1.7 btn  btn-warning action part part1" data-part="part1" data-start="1" >Part 1</div>
                     <div class="col-md-1.7 btn  btn-warning part part2" data-part="part2" data-start="{{ count($model->part1)+1 }}" >Part 2</div>
@@ -435,11 +435,7 @@
 @section('script')
 <script src="assets/js/question_answer.js"></script>
 <script>
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
+    
     var c = localStorage.getItem("timer");
     if(c == null || c==0){
         c = $('#timeStart').val();
@@ -471,10 +467,7 @@
         $.ajax({
             type: "GET",
             url: form.attr('action'),
-            // data: form.serialize(),
-            data:{
-                                id: id,
-                            },
+            data: form.serialize(),
             dataType: 'JSON',
             success: function(data){
                 $("input[type=radio]:checked").addClass("false");
@@ -540,7 +533,7 @@ $(document).ready(function(){
     }
         var id = form.data("testid");
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: form.attr('action'),
             data: form.serialize(),
             dataType: 'JSON',
@@ -558,6 +551,7 @@ $(document).ready(function(){
                     var radio_answer_listen = "radio_answer_listen_"+value+dem;
                     radio_answer_read = radio_answer_read.toLowerCase();
                     radio_answer_listen = radio_answer_listen.toLowerCase();
+                    console.log(radio_answer_listen);
                     $('.'+radio_answer_read).removeClass("false");
                     $('.'+radio_answer_read).addClass("true");
                     $('.'+radio_answer_listen).removeClass("false");

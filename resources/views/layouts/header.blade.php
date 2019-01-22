@@ -48,15 +48,14 @@
                                         </ul>
                                     </li>
                                     
-                                    <li><a href="#">Events</a>
-                                        <ul class="dropdown">
-                                            <li><a href="event-style-one.html">Events Style One</a></li>
-                                            <li><a href="event-style-two.html">Events Style Two</a></li>
-                                            <li><a href="single-events.html">Events Details</a></li>
-                                        </ul>
-                                    </li>
                                     
-									<li><a href="{{ route('contest') }}">Contest</a></li>
+									<li><a href="{{ route('contest') }}">Contest</a>
+										<ul class="dropdown">
+											<li><a href="{{ route('contest.full-test') }}">Full Test</a></li>
+                                            <li><a href="{{ route('contest.listeing.index') }}">Listening Test</a></li>
+                                            <li><a href="{{ route('contest.reading.index') }}">Reading Test</a></li>
+										</ul>
+									</li>
 									
 									<li><a href="#">Blog</a>
 										<ul class="dropdown">
