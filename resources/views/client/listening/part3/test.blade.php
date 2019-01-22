@@ -8,7 +8,7 @@ $index = $dem;
 <form method="post" id="fulltest_part_head" action="#" data-part="part3">
     <input type="hidden" value="part3" name="part"/>
     <div  data-media="media_{{ $medias->get(0)->id }}"  class="question fullest_page_{{ $index+1 }} part3_{{ $medias->get(0)->id }}" data-page="{{ $index+1 }}"  data-id="{{ $medias->get(0)->id }}" data-part="part3">
-        <div class="text-center col-md-12" >
+        <div class="text-center" >
             <audio controls>
                 <source src="medias/{{ $medias->get(0)->mediaFile }}" type="audio/mpeg">
                 </audio>
@@ -16,10 +16,11 @@ $index = $dem;
                 <p>{!! $medias->get(0)->script_answer !!}</p>   
             </div>
         </div>
-        <?php 
+    </div>
+    <?php 
         foreach ($part3s[0] as $part3){
         ?>
-        <div  class="question  media_{{ $part3->id }}" data-page="{{ $dem+1 }}"   data-part="3">
+        <div  class="question  media_{{ $part3->media_id }}" data-page="{{ $dem+1 }}"   data-part="3">
             <p>Question: {{ $dem+1 }} <strong>{{ $part3->question }}</strong></p>
              <ol id="que" type="A"  >
                 <li>
@@ -43,15 +44,14 @@ $index = $dem;
                 </li>
             </ol> 
         </div>
-    </div>
-    <?php $dem++; } ?> 
+        <?php $dem++; } ?> 
     <?php
     for ($i = 1; $i < count($medias); $i++) {
         $media = $medias->get($i);
         $index++;
     ?>
     <div  data-media="media_{{ $media->id }} " style="display:none" class="question fullest_page_{{ $index+1 }} part3_{{ $media->id }}" data-page="{{ $index+1 }}"  data-id="{{ $media->id }}" data-part="part3">
-        <div class="text-center col-md-12" >
+        <div class="text-center" >
             <audio controls>
                 <source src="medias/{{ $media->mediaFile }}" type="audio/mpeg">
             </audio>
@@ -62,7 +62,7 @@ $index = $dem;
     </div>
     <?php } ?>
     <?php
-    for ($idx = 1; $idx < 5; $idx++) {
+    for ($idx = 1; $idx < count($part3s); $idx++) {
         foreach ($part3s[$idx] as $part3) {
             $dem++;
     ?>

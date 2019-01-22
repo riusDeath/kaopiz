@@ -14,37 +14,28 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-3 col-md-6">
-				<a href="{{ route('contest.listeing.part1') }}">
+				<a href="{{ route('contest.reading.part5') }}">
 					<div class="work-process">
 						<i class="icofont-checked"></i>
-						<h3>Partr1: Photographs</h3>
+						<h3>Partr5: Incomplete sentence</h3>
 						<p>....</p>
 					</div>
 				</a>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<a href="{{ route('contest.listeing.part2') }}">
+				<a href="{{ route('contest.reading.part6') }}">
 					<div class="work-process">
 						<i class="icofont-checked"></i>
-						<h3>Partr2: Question-Response</h3>
+						<h3>Partr6: Text completion</h3>
 						<p>....</p>
 					</div>
 				</a>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<a href="{{ route('contest.listeing.part3') }}">
+				<a href="{{ route('contest.reading.part7') }}">
 					<div class="work-process">
 						<i class="icofont-checked"></i>
-						<h3>Partr3: Short conversation</h3>
-						<p>....</p>
-					</div>
-				</a>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<a href="{{ route('contest.listeing.part4') }}">
-					<div class="work-process">
-						<i class="icofont-checked"></i>
-						<h3>Partr4: Short talk</h3>
+						<h3>Partr7: Reading comprehen</h3>
 						<p>....</p>
 					</div>
 				</a>

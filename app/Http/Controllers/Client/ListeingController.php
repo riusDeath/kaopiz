@@ -38,9 +38,16 @@ class ListeingController extends Controller
 
     public function part3()
     {
-    	$part3s = Part3::groupBy('level_id')->get();
+        $part3s = Part3::groupBy('level_id')->get();
 
-    	return view('client.listening.part3.index', compact('part3s'));
+        return view('client.listening.part3.index', compact('part3s'));
+    }
+
+    public function part4()
+    {
+    	$part4s = Part4::groupBy('level_id')->get();
+
+    	return view('client.listening.part4.index', compact('part4s'));
     }
 
     public function part1test(Request $request)
@@ -60,13 +67,26 @@ class ListeingController extends Controller
     public function part3test(Request $request)
     {
         $medias = Level::find($request->id)->listMediaPart3();
+        
         $part3s = [];
         foreach ($medias as $value) {
             $part3 = Part3::where('media_id', $value->id)->get();
             array_push($part3s, $part3);
         }
-        
+
         return view('client.listening.part3.test', compact('medias', 'part3s'));
+    }
+
+    public function part4test(Request $request)
+    {
+        $medias = Level::find($request->id)->listMediaPart4();
+        $part4s = [];
+        foreach ($medias as $value) {
+            $part4 = Part4::where('media_id', $value->id)->get();
+            array_push($part4s, $part4);
+        }
+
+        return view('client.listening.part4.test', compact('medias', 'part4s'));
     }
 
 }
