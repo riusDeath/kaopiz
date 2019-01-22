@@ -16,7 +16,7 @@ $dem = 0;
 		<div class="row">
 			<div class="col-md-9 colQuestion">
 				<form   action="#" id="fulltest_part_head" method="post" >
-					<input type="hidden" value="part1" name="part"/>
+					<input type="hidden" value="part2" name="part"/>
 					<div class="question fullest_page_{{ $dem+1 }} part1_{{ $dem+1 }}" data-page="1"  id="test_question_{{ $part2s->get(0)->id }}" data-part="part1">
 						<div class="text-center" >
 							<div class="col-md-12">

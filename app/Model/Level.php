@@ -50,6 +50,7 @@ class Level extends Model
                     ->groupBy('part3.media_id')
                     ->join('levels', 'levels.id', '=', 'part3.level_id')
                     ->where('levels.id', $this->id)
+                    ->inRandomOrder()
                     ->take(10)
                     ->get();
     }
@@ -63,6 +64,7 @@ class Level extends Model
                     ->join('levels', 'levels.id', '=', 'part_4.level_id')
                     ->where('levels.id', $this->id)
                     ->take(10)
+                    ->->inRandomOrder()
                     ->get();
     }
 
@@ -74,6 +76,7 @@ class Level extends Model
                     ->groupBy('part6.passage_id')
                     ->join('levels', 'levels.id', '=', 'part6.level_id')
                     ->where('levels.id', $this->id)
+                    ->->inRandomOrder()
                     ->take(10)
                     ->get();
     }
@@ -86,6 +89,7 @@ class Level extends Model
                     ->groupBy('part7.passage_id')
                     ->join('levels', 'levels.id', '=', 'part7.level_id')
                     ->where('levels.id', $this->id)
+                    ->->inRandomOrder()
                     ->take(10)
                     ->get();
     }

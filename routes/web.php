@@ -51,4 +51,6 @@ Route::group(['namespace' => 'Client'], function(){
 		Route::get('/Reading.part6.level_{id}.html', 'ReadingController@part6test')->name('contest.reading.part6.test');
 		Route::get('/Reading.part7.level_{id}.html', 'ReadingController@part7test')->name('contest.reading.part7.test');
 	});
+
+	Route::get('/result', 'ResultController@result')->name('test.result');
 });

@@ -5,7 +5,7 @@
 $dem = 0;
 $index = $dem;
 ?>
-<form method="post" id="fulltest_part_head" action="#" data-part="part7">
+<form method="GET" id="fulltest_part_head" action="{{ route('test.result') }}" data-part="part7">
     <input type="hidden" value="part7" name="part"/>
     <div  data-media="media_{{ $passages->get(0)->id }}"  class="question fullest_page_{{ $index+1 }} part7_{{ $passages->get(0)->id }}" data-page="{{ $index+1 }}"  data-id="{{ $passages->get(0)->id }}" data-part="part7">
         <div class="text-center" >
@@ -94,4 +94,5 @@ $index = $dem;
 @endsection
 @section('script')
 <script src="assets/js/question_answer.js"></script>
+<script src="assets/js/resultPractice.js"></script>
 @endsection
