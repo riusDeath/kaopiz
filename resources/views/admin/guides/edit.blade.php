@@ -37,7 +37,7 @@
 							<!-- /.box-header -->
 							<div class="form-group">
 			                  	<label for="exampleInputFile">File input</label>
-			                  	<input type="file" id="exampleInputFile" name="picture" value="{{ $model->avatar }}">
+			                  	<input type="file" id="exampleInputFile" name="picture" value="{{ $model->avatar }}" required="">
 								<img src="images/{{ $model->avatar }}" alt="">
 			                  	<p class="help-block">Choose avatar</p>
 			                </div>

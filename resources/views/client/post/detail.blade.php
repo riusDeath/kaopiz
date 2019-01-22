@@ -48,8 +48,8 @@
 					<article id="div-comment-1" class="comment-body">
 						<footer class="comment-meta">
 							<div class="comment-author vcard">
-								<img alt="" src="http://1.gravatar.com/avatar/d7a973c7dab26985da5f961be7b74480?s=100&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/d7a973c7dab26985da5f961be7b74480?s=200&amp;d=mm&amp;r=g 2x" class="avatar avatar-100 photo" height="100" width="100">						
-								<b class="fn"><a href="#" rel="external nofollow" class="url">Một người bình luận WordPress</a></b> <span class="says">says:</span>					
+								<i class="icofont-teacher"></i>						
+								<span class="says">says:</span>					
 							</div><!-- .comment-author -->
 							<div class="comment-metadata">
 									<a href="http://localhost:8888/wordpress/2018/12/06/chao-moi-nguoi/#comment-1">
@@ -64,8 +64,7 @@
 						<div class="comment-content">
 							<p>
 								<br>Hello, this is a comment
-									To get started with the comment administrator, edit or delete comments,<br> please visit the Comments area in the admin page.Xin chào, đây là một bình luận<br>
-								<a href="https://gravatar.com">Gravatar</a>.
+									To get started with the comment administrator, edit or delete comments,<br> please visit the Comments area in the admin page.<br>
 							</p>
 						</div>
 						<!-- .comment-content -->
@@ -79,8 +78,12 @@
 				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/wordpress/2018/12/06/chao-moi-nguoi/#respond" style="display:none;">Cancel reply</a></small></h3>			
 				<form action="http://localhost:8888/wordpress/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
 					<p class="logged-in-as">
-						<a href="http://localhost:8888/wordpress/wp-admin/profile.php" aria-label="Logged in as thuyvu. Edit your profile.">Logged in as thuyvu</a>. 
+						@if(Auth::check())
+						<a href="http://localhost:8888/wordpress/wp-admin/profile.php" aria-label="Logged in as thuyvu. Edit your profile.">Logged in as {{ Auth::user()->name }}</a>. 
 						<a href="http://localhost:8888/wordpress/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Flocalhost%3A8888%2Fwordpress%2F2018%2F12%2F06%2Fchao-moi-nguoi%2F&amp;_wpnonce=cce4fe4c21">Log out?</a>
+						@else
+						<a href="{{ route('login') }}">Log in?</a>
+						@endif
 					</p>
 					<p class="comment-form-comment">
 						<label for="comment">Comment</label> 
@@ -90,7 +93,6 @@
 						<input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID">
 						<input type="hidden" name="comment_parent" id="comment_parent" value="0">
 					</p>
-					<input type="hidden" id="_wp_unfiltered_html_comment_disabled" name="_wp_unfiltered_html_comment" value="7e197f4b1b"><script>(function(){if(window===window.parent){document.getElementById('_wp_unfiltered_html_comment_disabled').name='_wp_unfiltered_html_comment';}})();</script>
 				</form>
 			</div>
 			<!-- #respond -->

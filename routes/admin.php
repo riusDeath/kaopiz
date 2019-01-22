@@ -68,6 +68,7 @@
 			Route::get('/index', 'UserController@index')->name('user.index');
 			Route::get('/delete', 'UserController@delete')->name('user.delete');
 			Route::get('/save', 'UserController@save')->name('user.save');
+			Route::get('/account', 'UserController@account')->name('user.account');
 	});
 
 	Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function(){
@@ -77,9 +78,13 @@
 			Route::get('/delete/{id}', 'PostController@delete')->name('post.delete');
 			Route::get('/newpost.html', 'PostController@add')->name('post.add');
 			Route::post('/newpost.html', 'PostController@create');
-			Route::get('/category', 'CategoryController@add')->name('category.add');
 			Route::get('/post.revisions{id}.html', 'PostController@revision')->name('post.revisions');
 			Route::get('/post.restore{id}.html', 'PostController@restore')->name('post.restore');
+			Route::get('/category', 'CategoryController@add')->name('category.add');
+			Route::get('/post.category.html', 'CategoryController@index')->name('post.category');
+			Route::get('/post.category.edit{id}.html', 'CategoryController@edit')->name('post.category.edit');
+			Route::post('/post.category.save.html', 'CategoryController@save')->name('post.category.save');
+			Route::get('/post.category.delete{id}.html', 'CategoryController@delete')->name('post.category.delete');
 	});
 
 

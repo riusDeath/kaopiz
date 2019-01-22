@@ -24,7 +24,7 @@
         $(document).on('click', '.btn-remove', function(){
                 var idtable = $(this).attr('data-table');
                 var url = $(this).attr('linkUrl');
-                var del = confirm('You want to delete question!');
+                var del = confirm('You want to delete !');
                 if (del == true) {
                     $.ajax({
                         url: url,

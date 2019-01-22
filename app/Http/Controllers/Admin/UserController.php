@@ -39,4 +39,9 @@ class UserController extends Controller
     	$user->save();
     	return redirect()->back()->with('msg', 'successfully!');
     }
+
+    public function account()
+    {
+        return view('admin.user.account');
+    }
 }

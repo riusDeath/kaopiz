@@ -15,7 +15,7 @@
 
 <div class="box">
 	<div class="box-header with-border">
-		<h3 class="box-title">ALL POSTS</h3>
+		<h3 class="box-title">Category</h3>
 	</div>
 	<div class="col-md-3">
 		<form action="" method="GET">
@@ -26,6 +26,7 @@
 					<div class="input-group-btn">
 						<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
 					</div>
+					<a href="{{ route('post.category.edit', ['id' => -1]) }}"></a>
 				</div>
 			</div>
 		</form>
@@ -35,53 +36,70 @@
 		<table class="table table-bordered table-hover" id="table_test">
 			<tbody><tr>
 				<th>index</th>
-				<th>author</th>
+				<th>name</th>
+				<th>slug</th>
 				<th>Status</th>
-				<th>Date</th>
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
-			@foreach($posts as $post)
+			@foreach($categories as $category)
 			<tr>
-				<td>{{ ($posts ->currentpage()-1) * $posts ->perpage() + $loop->index + 1 }}</td>
-				<td>{{ $post->getauthor['name'] }}</td>
+				<td>{{ ($categories ->currentpage()-1) * $categories ->perpage() + $loop->index + 1 }}</td>
+				<td>{{ $category->name }}</td>
+				<td>{{ $category->slug }}</td>
 				<td>
-					@if($post->status == 1)
+					@if($category->status == 1)
 					<span class="badge bg-red">Show</span>
 					@else
 					<span>Hide</span>
 					@endif
 				</td>
-				<td>
-					@if($post->post_modified == 0)
-					{{ $post->updated_at }}
-					@else 
-					Last Modified {{ $post->updated_at }}
-					@endif
-				</td>
 				<td class="text-center">
-                    <a href="{{ route('post.edit', ['id' => $post->id]) }}" class="btn btn-sm btn-success">
+                    <a href="{{ route('post.category.edit', ['id' => $category->id]) }}" class="btn btn-sm btn-success">
                         <i class="fa fa-fw fa-edit"></i>
                     </a>
 				</td>
 				<td class="text-center">
-					<button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $post->id }}" linkUrl="{{ route('post.delete', ['id' => $post->id])}}" data-table="table_test">
+					<button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $category->id }}" linkUrl="{{ route('post.category.delete', ['id' => $category->id])}}" data-table="table_test">
+                        <i class="fa fa-fw fa-times-circle" ></i>
+                    </button>
+				</td>
+			</tr>
+			@foreach($category->category_child as $cat_ch)
+                <tr>
+                	<td></td>
+				<td>{{ $cat_ch->name }}</td>
+				<td>{{ $cat_ch->slug }}</td>
+				<td>
+					@if($cat_ch->status == 1)
+					<span class="badge bg-red">Show</span>
+					@else
+					<span>Hide</span>
+					@endif
+				</td>
+				<td class="text-center">
+                    <a href="{{ route('post.category.edit', ['id' => $cat_ch->id]) }}" class="btn btn-sm btn-success">
+                        <i class="fa fa-fw fa-edit"></i>
+                    </a>
+				</td>
+				<td class="text-center">
+					<button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $cat_ch->id }}" linkUrl="{{ route('post.category.delete', ['id' => $cat_ch->id])}}" data-table="table_test">
                         <i class="fa fa-fw fa-times-circle" ></i>
                     </button>
 				</td>
 			</tr>
 			@endforeach
+			@endforeach
 			
 		</tbody>
 		<div class="box-footer clearfix">
 			<ul class="pagination pagination-sm no-margin pull-right">
-				{{ $posts->links() }}
+				{{ $categories->links() }}
 			</ul>
 		</div>
 	</table>
 </div>
 <!-- /.box-body -->
-
 </div>
 @endsection
 @section('script')

@@ -18,4 +18,9 @@ class Category extends Model
     {
         return \DB::table('categories')->where('category_parent', '0')->get();
     }
+
+    public function category_child()
+    {
+        return $this->hasMany('App\Model\Category', 'category_parent', 'id');
+    }
 }

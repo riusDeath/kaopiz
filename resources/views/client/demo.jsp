@@ -350,30 +350,6 @@
                 </form>
             </div>
     </div>
-    <div class="modal fade" id="modal-message" >
-    <div class="modal-dialog">
-    <div class="modal-content">
-            <div class="modal-header">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>Listening</th>
-                            <th>Reading</th>
-                            <th>Score</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="score-listening"></td>
-                            <td class="score-reading"></td>
-                            <td class="score"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
     <div class="col-md-4" style="position: relative; height: 800px;" id="test_col_right">
         <div class="box_ketqua" id="test_ketqua" style="position: absolute; left: 15px; right: 15px; margin: 10px;">
            <div class="head">
@@ -550,11 +526,11 @@ $(document).ready(function(){
         e.preventDefault();
         stop();
         var form = $('#fulltest_part_head');
-        var total = $("input[type=radio]:checked").length;
-        if (total == 0){
-            alert("Answer is empty....");
-            return false;
-        }
+    var total = $("input[type=radio]:checked").length;
+    if (total == 0){
+        alert("Answer is empty....");
+        return false;
+    }
         var id = form.data("testid");
         $.ajax({
             type: "GET",
@@ -569,12 +545,13 @@ $(document).ready(function(){
                 var listen = 0;
                 var read = 0;
                 $('.cau').find("a").css("background-color", "#ff6666");
-                $.each(data['answer'], function(key, value){
+                $.each(data, function(key, value){
                     dem++;
                     var radio_answer_read = "radio_answer_read_"+value+dem;
                     var radio_answer_listen = "radio_answer_listen_"+value+dem;
                     radio_answer_read = radio_answer_read.toLowerCase();
                     radio_answer_listen = radio_answer_listen.toLowerCase();
+                    console.log(radio_answer_listen);
                     $('.'+radio_answer_read).removeClass("false");
                     $('.'+radio_answer_read).addClass("true");
                     $('.'+radio_answer_listen).removeClass("false");
@@ -592,9 +569,8 @@ $(document).ready(function(){
                 });
                 var page = $('#fulltest_page').data("page");
                 $('.fullest_page_'+page).find(".script_answer").show();
-                $('.score-listening').html(listen*5);
-                $('.score-reading').html(read*5);
-                $('.score').html(listen*5+read*5);
+                var detail = '<table class="table table-striped table-hover"><thead><tr><th>Listening</th><th>Reading</th><th>Score</th></tr></thead><tbody><tr><td>'+listen*5+'</td><td>'+read*5+'</td><td>'+(listen*5+read*5)+'</td></tr></tbody></table>';
+                $('.modal-header').html(detail);
                 $('#modal-message').modal();
             }
         });

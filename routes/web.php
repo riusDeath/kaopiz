@@ -17,7 +17,7 @@ Route::get('/logout', 'HomeController@logout')->name('logout');
 Route::get('/login', 'HomeController@login')->name('login');
 Route::post('/login', 'HomeController@postlogin')->name('login');
 
-Route::group(['namespace' => 'Client'], function(){
+Route::group(['namespace' => 'Client', 'middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'Contest'], function(){
 		Route::get('/contest.html', 'TestController@index')->name('contest');
