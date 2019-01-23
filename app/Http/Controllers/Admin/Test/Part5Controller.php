@@ -35,7 +35,7 @@ class Part5Controller extends Controller
         return view('admin.question.part5', compact('level', 'test', 'model'));
     }
 
-     public function edit(Request $request)
+    public function edit(Request $request)
     {
         $level = Level::all();
         $part5 = Part5::findOrFail($request->id);

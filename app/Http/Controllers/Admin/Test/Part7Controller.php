@@ -53,6 +53,20 @@ class Part7Controller extends Controller
 
     public function edit(Request $request)
     {
-        
+        $level = Level::all();
+        $part7 = Part7::findOrFail($request->id);
+        $test = Test::orderBy('id', 'desc')->get();
+
+        return view('admin.question.edit.part7', compact('level', 'test', 'part7'));
+    }
+
+    public function update(Request $request)
+    {
+
+        $part = Part7::findOrFail($request->id);
+        $part->fill($request->all());
+        $part->save();
+
+        return redirect(route('part7.index'));
     }
 }

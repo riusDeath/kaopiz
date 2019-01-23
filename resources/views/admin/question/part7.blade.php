@@ -30,7 +30,7 @@
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad">
+        <div class="box-body pad" style="display: none">
 
             <form role="form" action="{{ route('part7.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -149,9 +149,9 @@
                 <td>{{ $part7->optionD }}</td>
                 <td>{{ $part7->answer }}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-sm btn-success edit" data-toggle="modal" data-target="#modal-add" data-id="{{ $part7->id }}" data-status="{{ $part7->status }}">
+                        <a href="{{ route('part7.edit', ['id' => $part7->id]) }}" class="btn btn-sm btn-success edit" >
                             <i class="fa fa-fw fa-edit"></i>
-                        </button>
+                        </a>
                     </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part7->id }}" linkUrl="{{ route('part7.delete', ['id' => $part7->id])}}" data-table = "#table_test6">

@@ -40,6 +40,7 @@
 			Route::get('/delete', 'Part3Controller@delete')->name('part3.delete');
 			Route::get('/index', 'Part3Controller@index')->name('part3.index');
 			Route::get('/edit{id}', 'Part3Controller@edit')->name('part3.edit');
+			Route::post('/edit{id}', 'Part3Controller@update')->name('part3.edit');
 		});
 
 		Route::group(['prefix' => 'part4'], function(){
@@ -47,6 +48,7 @@
 			Route::post('/add', 'Part4Controller@add')->name('part4.add');
 			Route::get('/delete', 'Part4Controller@delete')->name('part4.delete');
 			Route::get('/edit{id}', 'Part4Controller@edit')->name('part4.edit');
+			Route::post('/edit{id}', 'Part4Controller@update')->name('part4.edit');
 		});
 
 		Route::group(['prefix' => 'part5'], function(){
@@ -62,6 +64,7 @@
 			Route::post('/add', 'Part6Controller@add')->name('part6.add');
 			Route::get('/delete', 'Part6Controller@delete')->name('part6.delete');
 			Route::get('/edit{id}', 'Part6Controller@edit')->name('part6.edit');
+			Route::post('/edit{id}.html', 'Part6Controller@update')->name('part6.edit');
 		});
 
 		Route::group(['prefix' => 'part7'], function(){
@@ -69,6 +72,7 @@
 			Route::post('/add', 'Part7Controller@add')->name('part7.add');
 			Route::get('/delete', 'Part7Controller@delete')->name('part7.delete');
 			Route::get('/edit{id}', 'Part7Controller@edit')->name('part7.edit');
+			Route::post('/edit{id}.html', 'Part7Controller@update')->name('part7.edit');
 		});
 
 	});

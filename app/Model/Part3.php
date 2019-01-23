@@ -33,7 +33,7 @@ class Part3 extends Model
 
     public function test()
     {
-        return $this->hasOne('App\Model\Test', 'test_id', 'id');
+        return $this->belongsTo('App\Model\Test', 'test_id', 'id');
     }
 
 }

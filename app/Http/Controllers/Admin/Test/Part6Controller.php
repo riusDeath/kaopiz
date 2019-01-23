@@ -52,6 +52,27 @@ class Part6Controller extends Controller
 
     public function edit(Request $request)
     {
-        
+        $level = Level::all();
+        $part6 = Part6::findOrFail($request->id);
+        $test = Test::orderBy('id', 'desc')->get();
+        $passage = Passage::find($part6->passage_id);
+        $part6s = $passage->Part6;
+        $index = 0;
+        foreach ($part6s as $value) {
+            if ($part6->id == $value->id) {
+                return view('admin.question.edit.part6', compact('level', 'test', 'part6', 'index'));
+            } 
+            $index++;
+        }
+    }
+
+    public function update(Request $request)
+    {
+
+        $part = Part6::findOrFail($request->id);
+        $part->fill($request->all());
+        $part->save();
+
+        return redirect(route('part6.index'));
     }
 }

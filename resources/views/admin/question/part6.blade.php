@@ -23,14 +23,14 @@
                 <div class="pull-right box-tools">
                 <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
-                    <i class="fa fa-minus"></i></button>
+                    <i class="fa fa-plus"></i></button>
                 <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
                         title="Remove">
                     <i class="fa fa-times"></i></button>
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad">
+        <div class="box-body pad" style="display: none">
 
             <form role="form" action="{{ route('part6.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -144,9 +144,9 @@
                 <td>{{ $part6->optionD }}</td>
                 <td>{{ $part6->answer }}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-sm btn-success edit" data-toggle="modal" data-target="#modal-add" data-id="{{ $part6->id }}" data-status="{{ $part6->status }}">
+                        <a href="{{ route('part6.edit', ['id' => $part6->id]) }}" class="btn btn-sm btn-success " >
                             <i class="fa fa-fw fa-edit"></i>
-                        </button>
+                        </a>
                     </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part6->id }}" linkUrl="{{ route('part6.delete', ['id' => $part6->id])}}" data-table = "#table_test6">

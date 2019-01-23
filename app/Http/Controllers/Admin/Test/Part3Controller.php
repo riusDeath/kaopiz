@@ -51,6 +51,25 @@ class Part3Controller extends Controller
 
     public function edit(Request $request)
     {
-        
+        $level = Level::all();
+        $part3 = Part3::findOrFail($request->id);
+        $test = Test::orderBy('id', 'desc')->get();
+
+        return view('admin.question.edit.part3', compact('level', 'test', 'part3'));
+    }
+
+    public function update(Request $request)
+    {
+
+        $part = Part3::findOrFail($request->id);
+        $media_id = $part->media_id;
+        // save picture
+        $part->fill($request->all());
+       
+        $part->media_id = $media_id;
+
+        $part->save();
+
+        return redirect(route('part3.index'));
     }
 }

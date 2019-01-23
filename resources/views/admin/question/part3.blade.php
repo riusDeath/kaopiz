@@ -120,20 +120,24 @@
         <table class="table table-bordered table-hover scroll" id="table_test3" >
             <tr>
                 <th>#</th>
+                <th>Question</th>
                 <th>Answer</th>
                 <th>Level</th>
+                <th>Test</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
             @foreach($model as $part3)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>{{ $part3->question }}</td>
                 <td>{{ $part3->answer }}</td>
                 <td>{{ $part3->level['level'] }}</td>
+                <td>{{ $part3->test['name'] }}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-sm btn-success edit" data-toggle="modal" data-target="#modal-add" data-id="{{ $part3->id }}" data-status="{{ $part3->status }}">
+                        <a href="{{ route('part3.edit', ['id' => $part3->id]) }}" class="btn btn-sm btn-success" >
                             <i class="fa fa-fw fa-edit"></i>
-                        </button>
+                        </a>
                     </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part3->id }}" linkUrl="{{ route('part3.delete', ['id' => $part3->id])}}" data-table = "#table_test3">

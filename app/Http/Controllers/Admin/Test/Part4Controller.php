@@ -45,11 +45,30 @@ class Part4Controller extends Controller
         $level = Level::all();
         $model = Part4::paginate(12);
         $test = Test::orderBy('id', 'desc')->get();
-        return view('admin.question.part3', compact('level', 'test', 'model'));
+        return view('admin.question.part4', compact('level', 'test', 'model'));
     }
 
     public function edit(Request $request)
     {
-        
+        $level = Level::all();
+        $part4 = Part4::findOrFail($request->id);
+        $test = Test::orderBy('id', 'desc')->get();
+
+        return view('admin.question.edit.part4', compact('level', 'test', 'part4'));
+    }
+
+    public function update(Request $request)
+    {
+
+        $part = Part4::findOrFail($request->id);
+        $media_id = $part->media_id;
+        // save picture
+        $part->fill($request->all());
+       
+        $part->media_id = $media_id;
+
+        $part->save();
+
+        return redirect(route('part4.index'));
     }
 }

@@ -82,7 +82,7 @@ class Part1Controller extends Controller
             $media = part::mediaUpload($request);
             $part->media_id = $media->id;
         } else {
-            $media = $media_id;
+            $part->media_id = $media_id;
         }
 
         $part->save();
