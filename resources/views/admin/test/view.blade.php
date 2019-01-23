@@ -96,14 +96,14 @@
                 <div class="pull-right box-tools">
                 <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
-                    <i class="fa fa-minus"></i></button>
+                    <i class="fa fa-plus"></i></button>
                 <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
                         title="Remove">
                     <i class="fa fa-times"></i></button>
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad">
+        <div class="box-body pad" style="display: none">
 
             <form role="form" action="{{ route('part1.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -208,14 +208,14 @@
                 <div class="pull-right box-tools">
                 <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
-                    <i class="fa fa-minus"></i></button>
+                    <i class="fa fa-plus"></i></button>
                 <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
                         title="Remove">
                     <i class="fa fa-times"></i></button>
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad">
+        <div class="box-body pad" style="display: none">
             <form role="form" action="{{ route('part2.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="box-body">
@@ -317,7 +317,7 @@
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad" style="">
+        <div class="box-body pad" style="display: none">
             <form role="form" action="{{ route('part3.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="box-body">
@@ -576,14 +576,14 @@
                 <div class="pull-right box-tools">
                 <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
-                    <i class="fa fa-minus"></i></button>
+                    <i class="fa fa-plus"></i></button>
                 <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
                         title="Remove">
                     <i class="fa fa-times"></i></button>
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad">
+        <div class="box-body pad" style="display: none">
 
             <form role="form" action="{{ route('part5.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -705,14 +705,14 @@
                 <div class="pull-right box-tools">
                 <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
-                    <i class="fa fa-minus"></i></button>
+                    <i class="fa fa-plus"></i></button>
                 <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
                         title="Remove">
                     <i class="fa fa-times"></i></button>
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad">
+        <div class="box-body pad" style="display: none">
 
             <form role="form" action="{{ route('part6.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -846,14 +846,14 @@
                 <div class="pull-right box-tools">
                 <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
-                    <i class="fa fa-minus"></i></button>
+                    <i class="fa fa-plus"></i></button>
                 <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
                         title="Remove">
                     <i class="fa fa-times"></i></button>
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad">
+        <div class="box-body pad" style="display: none">
 
             <form role="form" action="{{ route('part7.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
