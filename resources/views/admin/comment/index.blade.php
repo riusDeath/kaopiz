@@ -34,14 +34,15 @@
 	<div class="box-body">
 		<table class="table table-bordered table-hover" id="table_test">
 			<tbody><tr>
-				<th>id</th>
+				<th>in</th>
 				<th>Post</th>
 				<th>author</th>
 				<th>Content</th>
 				<th>Status</th>
 				<th>Delete</th>
 			</tr>
-			@foreach($comments as $comment)
+			@foreach($tablecomments as $comment)
+			@if($comment->comment_parent == 0)
 			<tr>
 				<td>{{ $comment->id }}</td>
 				<td><a href="{{ route('post.edit', ['id' => $comment->post_id]) }}">{{ $comment->post->title }}</a></td>
@@ -60,12 +61,35 @@
                     </button>
 				</td>
 			</tr>
+			@foreach($tablecomments as $comment_child)
+			@if($comment->id == $comment_child->comment_parent	)
+			<tr>
+				<td>parent: {{ $comment_child->comment_parent }}</td>
+				<td><a href="{{ route('post.edit', ['id' => $comment_child->post_id]) }}">{{ $comment_child->post->title }}</a></td>
+				<td><a href="{{ route('user.view', ['id' => $comment_child->user_id]) }}">{{ $comment_child->author }}</a></td>
+				<td>{{ $comment_child->content }}</td>
+				<td>
+					@if($comment_child->status == 1)
+					<a href="{{ route('comment.edit', ['id' => $comment_child->id])}}"><span>Approved</span></a>
+					@else
+					<a href="{{ route('comment.edit', ['id' => $comment_child->id])}}"><span class="badge bg-red">UnApproved</span></a>
+					@endif
+				</td>
+				<td class="text-center">
+					<button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $comment_child->id }}" linkUrl="{{ route('comment.delete', ['id' => $comment_child->id])}}" data-table="table_test">
+                        <i class="fa fa-fw fa-times-circle" ></i>
+                    </button>
+				</td>
+			</tr>
+			@endif
+			@endforeach
+			@endif
 			@endforeach
 			
 		</tbody>
 		<div class="box-footer clearfix">
 			<ul class="pagination pagination-sm no-margin pull-right">
-				{{-- {{ $comments->links() }} --}}
+				{{ $tablecomments->links() }}
 			</ul>
 		</div>
 	</table>

@@ -95,7 +95,7 @@
 				<div class="show-comment" style="margin: 10px;  padding: 10px">
                             <div class="comment_parent scroll table_comment">
                                 @foreach($comment_parents as $comment)
-                                @if($comment->comment_parent == 0)
+                                @if($comment->comment_parent == 0 )
                                 <div class="media " data-spy="scroll">
                                     <div class="media-body">
                                         <h4 class="media-heading">{{  $comment->author  }}</h4>
@@ -113,8 +113,8 @@
                                             </div>                       
                                             <button href="{{ route('post.comment.add', ['id' => $model->id]) }}"  type="button" class="btn btn-primary reply_comment" comment_id="{{ $comment->id }}">Send</button>
                                         </form>
-                                        @foreach ($comment_childs as $reply)
-                                        @if($reply->comment_parent == $comment->id)
+                                        @foreach ($comment_parents as $reply)
+                                        @if($reply->comment_parent == $comment->id )
                                         <div class="media-body ">
                                             <h4 class="media-heading">  {{ $reply->author }}</h4>
                                             <p>{{ $reply->content }}</p>

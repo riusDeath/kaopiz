@@ -34,4 +34,23 @@ class Part5Controller extends Controller
         $test = Test::orderBy('id', 'desc')->get();
         return view('admin.question.part5', compact('level', 'test', 'model'));
     }
+
+     public function edit(Request $request)
+    {
+        $level = Level::all();
+        $part5 = Part5::findOrFail($request->id);
+        $test = Test::orderBy('id', 'desc')->get();
+
+        return view('admin.question.edit.part5', compact('level', 'test', 'part5'));
+    }
+
+    public function update(Request $request)
+    {
+
+        $part = Part5::findOrFail($request->id);
+        $part->fill($request->all());
+        $part->save();
+
+        return redirect(route('part5.index'));
+    }
 }

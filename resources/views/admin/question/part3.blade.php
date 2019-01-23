@@ -23,14 +23,14 @@
                 <div class="pull-right box-tools">
                 <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
-                    <i class="fa fa-minus"></i></button>
+                    <i class="fa fa-plus"></i></button>
                 <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
                         title="Remove">
                     <i class="fa fa-times"></i></button>
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad">
+        <div class="box-body pad" style="display: none">
 
             <form role="form" action="{{ route('part3.add') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -106,7 +106,6 @@
                         </div>
                     </div>
                     <div id="addPart3"></div>
-
                     <button class="btn btn-success btn-addQuestionPart" data-dblPart="questionPart3" data-div="#addPart3"><i class="fa fa-fw fa-plus-square"></i></button>
                     <button class="btn btn-danger btn-removeQuestionPart" style="" data-dblPart="questionPart3" data-div="#addPart3"><i class="fa fa-fw fa-remove"></i></button>
                 </div>
@@ -114,18 +113,13 @@
                 <div class="box-footer text-center">
                     <button type="submit" class="btn btn-primary " name="add">Add</button>
                 </div>
-                {{-- <div class="box-footer col-md-6">
-                    <button type="button" class="btn btn-primary  name="update" title="You can choose a row table!">Update</button><span class="text-red">Please select a row in the table to edit!</span>
-                </div> --}}
             </form>
             <div class="box">
-            
         </div>
         </div>
         <table class="table table-bordered table-hover scroll" id="table_test3" >
             <tr>
                 <th>#</th>
-                <th>Media</th>
                 <th>Answer</th>
                 <th>Level</th>
                 <th>Edit</th>
@@ -134,7 +128,6 @@
             @foreach($model as $part3)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td class="c-Edit">{{ $part3->media['mediaFile'] }}</td>
                 <td>{{ $part3->answer }}</td>
                 <td>{{ $part3->level['level'] }}</td>
                     <td class="text-center">

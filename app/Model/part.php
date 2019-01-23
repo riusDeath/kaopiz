@@ -18,7 +18,7 @@ class Part extends Model
     	// save media
         if($request->hasFile('mediaFile')){
             // name media
-            $filename = uniqid(). "." . $request->file('mediaFile')->getClientOriginalName('mediaFile');
+            $filename = $request->file('mediaFile')->getClientOriginalName('mediaFile');
 
             // save media
             $path = $request->mediaFile->storeAs('medias', $filename);

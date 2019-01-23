@@ -49,4 +49,9 @@ class Part6Controller extends Controller
         $test = Test::orderBy('id', 'desc')->get();
         return view('admin.question.part6', compact('level', 'test', 'model'));
     }
+
+    public function edit(Request $request)
+    {
+        
+    }
 }

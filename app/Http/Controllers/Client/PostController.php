@@ -16,9 +16,8 @@ class PostController extends Controller
     	$model = Post::findOrFail($request->id);
   
         $comment_parents = $model->comments();
-        $comment_childs = $model->comment_childs();
 
-    	return view('client.post.detail', compact('model', 'comment_parents', 'comment_childs'));
+    	return view('client.post.detail', compact('model', 'comment_parents'));
     }
 
     public function category(Request $request)

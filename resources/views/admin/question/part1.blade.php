@@ -23,14 +23,14 @@
                 <div class="pull-right box-tools">
                 <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
                         title="Collapse">
-                    <i class="fa fa-minus"></i></button>
+                    <i class="fa fa-plus"></i></button>
                 <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
                         title="Remove">
                     <i class="fa fa-times"></i></button>
                 </div>
               <!-- /. tools -->
             </div>
-        <div class="box-body pad">
+        <div class="box-body pad" style="display: none">
 
             <form role="form" action="{{ route('part1.add') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -100,8 +100,6 @@
         <table class="table table-bordered table-hover scroll" id="table_test1" >
             <tr>
                 <th>#</th>
-                <th>Media</th>
-                <th>Picture</th>
                 <th>Answer</th>
                 <th>Level</th>
                 <th>Edit</th>
@@ -110,14 +108,12 @@
             @foreach($model as $part1)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td class="c-Edit">{{ $part1->media['mediaFile'] }}</td>
-                <td><img src="{{ $part1->picture }}" alt="" width="50px">{{ $part1->picture }}</td>
                 <td>{{ $part1->answer }}</td>
                 <td>{{ $part1->level['level'] }}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-sm btn-success edit" data-toggle="modal" data-target="#modal-add" data-id="{{ $part1->id }}" data-status="{{ $part1->status }}">
+                        <a href="{{ route('part1.edit', ['id' => $part1->id]) }}" class="btn btn-sm btn-success"  >
                             <i class="fa fa-fw fa-edit"></i>
-                        </button>
+                        </a>
                     </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-sm btn-danger btn-remove"  data-id="{{ $part1->id }}" linkUrl="{{ route('part1.delete', ['id' => $part1->id])}}" data-table = "#table_test1">

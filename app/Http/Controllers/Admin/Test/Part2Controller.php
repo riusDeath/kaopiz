@@ -36,5 +36,34 @@ class Part2Controller extends Controller
         $test = Test::orderBy('id', 'desc')->get();
         return view('admin.question.part2', compact('level', 'test', 'model'));
     }
-    
+
+    public function edit(Request $request)
+    {
+        $level = Level::all();
+        $part2 = Part2::findOrFail($request->id);
+        $test = Test::orderBy('id', 'desc')->get();
+
+        return view('admin.question.edit.part2', compact('level', 'test', 'part2'));
+    }
+
+    public function update(Request $request)
+    {
+
+        $part = Part2::findOrFail($request->id);
+        $media_id = $part->media_id;
+        // save picture
+        $part->fill($request->all());
+        
+       
+        if ($request->hasFile('mediaFile')) {
+            $media = part::mediaUpload($request);
+            $part->media_id = $media->id;
+        } else {
+            $media = $media_id;
+        }
+
+        $part->save();
+
+        return redirect(route('part2.index'));
+    }
 }
