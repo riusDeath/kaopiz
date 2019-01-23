@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Model\Category;
+use App\Model\Comment;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function($view){
             $categories = Category::where('status', 1)->where('category_parent','0')->get();
-            $view->with(compact('categories'));
+            $comments = Comment::where('status', 0)->get();
+            $view->with(compact('categories', 'comments'));
         });
     }
 

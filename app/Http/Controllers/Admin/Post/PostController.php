@@ -19,7 +19,7 @@ class PostController extends Controller
 
     public function add()
     {
-    	$categories = Category::orderBy('id')->get();
+    	$categories = Category::all();
     	$category_parents = Category::categoryParent();
 
     	return view('admin.guides.add', compact('categories', 'category_parents'));

@@ -28,7 +28,7 @@ class HomeController extends Controller
 
     		return redirect(route('dashboard'));
     	}
-    	return view('login')->width('mess', 'Error email or password');
+    	return view('login')->with('mess', 'Error email or password');
     }
 
     public function index()

@@ -124,15 +124,11 @@
     				<div id="category-all" class="tabs-panel" style="display: block;">
     					<input type="hidden" name="post_category[]" value="0">			
     					<ul id="categorychecklist" data-wp-lists="list:category" class="categorychecklist form-no-clear">
-    						@if(count($categories) > 0)
     						<select name="category_id" id="select-category" class="form-control select-category" required="required">
     						@foreach($categories as $category)
     							<option value="{{ $category->id }}">{{ $category->name }}</option>
     						@endforeach
     						</select>
-    						@else
-    						<li id="category-1" class="popular-category"><label class="selectit"><input value="1" type="checkbox" name="post_category[]" id="in-category-1"> Chưa được phân loại</label></li>
-    						@endif
     					</ul>
     				</div>
     				<div id="category-adder" class="">

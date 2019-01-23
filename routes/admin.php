@@ -68,6 +68,7 @@
 			Route::get('/index', 'UserController@index')->name('user.index');
 			Route::get('/delete', 'UserController@delete')->name('user.delete');
 			Route::get('/save', 'UserController@save')->name('user.save');
+			Route::get('/view', 'UserController@view')->name('user.view');
 			Route::get('/account', 'UserController@account')->name('user.account');
 	});
 
@@ -87,5 +88,10 @@
 			Route::get('/post.category.delete{id}.html', 'CategoryController@delete')->name('post.category.delete');
 	});
 
+	Route::group(['prefix' => 'Comment', 'namespace' => 'Comment'], function(){
+			Route::get('/index.html', 'CommentController@index')->name('comment.index');
+			Route::get('/comment/edit{id}.html', 'CommentController@edit')->name('comment.edit');
+			Route::get('/comment/delete{id}.html', 'CommentController@delete')->name('comment.delete');
+	});
 
  ?>

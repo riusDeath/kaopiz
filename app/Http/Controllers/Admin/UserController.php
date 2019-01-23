@@ -30,6 +30,7 @@ class UserController extends Controller
     	if($request->id > -1) {
     		$user = User::findOrFail($request->id);
     		$user->update($request->all());
+            $user->password = bcrypt($request->password);
     		$user->save();
     		return redirect()->back()->with('msg', 'successfully!');
     	}
@@ -43,5 +44,12 @@ class UserController extends Controller
     public function account()
     {
         return view('admin.user.account');
+    }
+
+    public function view(Request $request)
+    {
+        $user = User::findOrFail($request->id);
+
+        return view('admin.user.view', compact('user'));
     }
 }

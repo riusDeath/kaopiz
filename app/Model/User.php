@@ -26,6 +26,11 @@ class User extends Model
     	'remember_token'
 	];
 
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment', 'user_id', 'id');
+    }
+
     public function user_test()
     {
         $this->belongsTo('App\Model\User_test', 'user_id');

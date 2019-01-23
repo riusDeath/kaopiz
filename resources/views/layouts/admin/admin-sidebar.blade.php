@@ -20,10 +20,10 @@
                     <i class="fa fa-dashboard"></i><span>Dashboard</span>
                 </a>
             </li>
-             <li class="treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-book"></i>
-                    <span>Manager Post</span>
+                    <span>Manager Post  </span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -33,6 +33,19 @@
                 <li><a href="{{ route('post.add') }}"><i class="fa fa-circle-o"></i> New Post</a></li>
                 <li><a href="{{ route('post.category') }}"><i class="fa fa-circle-o"></i>Category</a></li>
                 <li><a href="{{ route('post.category.edit', ['id' => -1]) }}"><i class="fa fa-circle-o"></i>New Category</a></li>
+                </ul>
+                <ul class="treeview-menu"></ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-book"></i>
+                    <span>Manager Comments <span class="badge badge-success">{{ count($comments) }}</span></span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                <li><a href="{{ route('comment.index') }}"><i class="fa fa-circle-o"></i>All Comments</a></li>
                 </ul>
                 <ul class="treeview-menu"></ul>
             </li>

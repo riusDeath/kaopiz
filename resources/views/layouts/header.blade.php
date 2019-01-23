@@ -24,7 +24,7 @@
 							<div class="classynav">
 								<ul>
                                    
-                                    <li><a href="#">Account</a>
+                                    <li><a href="#">{{ Auth::check()?Auth::user()->name:"Account" }}</a>
                                         <ul class="dropdown">
                                         	@if(Auth::check())
                                         		@if(Auth::user()->role == 0)

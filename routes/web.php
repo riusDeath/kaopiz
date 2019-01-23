@@ -17,9 +17,9 @@ Route::get('/logout', 'HomeController@logout')->name('logout');
 Route::get('/login', 'HomeController@login')->name('login');
 Route::post('/login', 'HomeController@postlogin')->name('login');
 
-Route::group(['namespace' => 'Client', 'middleware' => 'auth'], function(){
+Route::group(['namespace' => 'Client'], function(){
 
-	Route::group(['prefix' => 'Contest'], function(){
+	Route::group(['prefix' => 'Contest', 'middleware' => 'auth'], function(){
 		Route::get('/contest.html', 'TestController@index')->name('contest');
 		Route::get('/Full-test.html', 'TestController@fulltest')->name('contest.full-test');
 		Route::get('/Full-test/test_{id}.html', 'TestController@test')->name('contest.fulltest.test');
@@ -29,7 +29,9 @@ Route::group(['namespace' => 'Client', 'middleware' => 'auth'], function(){
 	Route::group(['prefix' => 'Post'], function(){
 		Route::get('/detail{id}.html', 'PostController@detail')->name('client.post.detail');
 		Route::get('/client/category/post/{id}.html', 'PostController@category')->name('client.post.category');
+		Route::get('/client/post/comment/add/{id}', 'PostController@addcomment')->name('post.comment.add')->middleware('auth');
 	});
+
 
 	Route::group(['prefix' => 'Listening'], function(){
 		Route::get('/Listening.html', 'ListeingController@index')->name('contest.listeing.index');
